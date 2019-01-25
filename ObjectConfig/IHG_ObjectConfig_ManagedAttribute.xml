@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE ObjectConfig PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<ObjectConfig name="ManagedAttribute">
+  <ObjectAttribute displayName="Node Level" editMode="Permanent" name="nodeLevel">
+    <Description>Node Level</Description>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Node ID" editMode="Permanent" extendedNumber="4" name="nodeID">
+    <Description>Node ID</Description>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Parent Node ID" editMode="Permanent" extendedNumber="3" name="parentNodeID">
+    <Description>Parent Node ID</Description>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Role Type" editMode="Permanent" extendedNumber="2" name="roleType">
+    <Description>Role Type</Description>
+  </ObjectAttribute>
+</ObjectConfig>

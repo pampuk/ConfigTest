@@ -1,0 +1,985 @@
+<!DOCTYPE ObjectConfig PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<ObjectConfig name="Identity">
+  <ObjectAttribute displayName="att_user_name" name="name" silent="true" system="true" type="string"/>
+  <ObjectAttribute displayName="att_detected_roles" groupFactory="true" name="bundles" system="true" type="string"/>
+  <ObjectAttribute displayName="att_detected_role_summary" name="bundleSummary" silent="true" system="true" type="string"/>
+  <ObjectAttribute displayName="att_assigned_roles" groupFactory="true" name="assignedRoles" system="true" type="string"/>
+  <ObjectAttribute displayName="att_assigned_role_summary" name="assignedRoleSummary" silent="true" system="true" type="string"/>
+  <ObjectAttribute displayName="att_exceptions" name="exceptions" silent="true" system="true" type="string"/>
+  <ObjectAttribute displayName="att_last_refresh" name="lastRefresh" silent="true" system="true" type="string"/>
+  <ObjectAttribute displayName="att_last_login" name="lastLogin" silent="true" system="true" type="string"/>
+  <ObjectAttribute displayName="att_capabilities" name="capabilities" system="true" type="string"/>
+  <ObjectAttribute displayName="att_composite_score" name="scorecard.compositeScore" silent="true" system="true" type="string"/>
+  <ObjectAttribute displayName="att_manager_status" name="managerStatus" system="true" type="boolean"/>
+  <ObjectAttribute displayName="att_rights" name="rights" system="true" type="string"/>
+  <ObjectAttribute displayName="att_workgroups" name="workgroups" system="true" type="string"/>
+  <ObjectAttribute displayName="Primary Work Address2" editMode="ReadOnly" name="primaryworkaddress2" type="string">
+    <AttributeSource name="PRIMARYWORKADDRESSLINE2">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="MBRSHP_IND" editMode="ReadOnly" name="membershipind" type="string"/>
+  <ObjectAttribute displayName="Email Communication" editMode="Permanent" name="emailcommunication" type="string"/>
+  <ObjectAttribute displayName="Primary Work Location" editMode="UntilFeedValueChanges" extendedNumber="6" name="primaryworklocation" type="string">
+    <ListenerRule>
+      <Reference class="sailpoint.object.Rule" name="IHG_Rule_ValueChange_HotelGMAttributes"/>
+    </ListenerRule>
+    <AttributeSource name="PRIMARYWORKLOCATION">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeSource name="physicaldeliveryofficename">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="AD Feed Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeTargets>
+      <AttributeTarget name="physicalDeliveryOfficeName" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="IHG Corporate Directory"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="physicalDeliveryOfficeName" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="Office 365 Cloud"/>
+        </ApplicationRef>
+      </AttributeTarget>
+	  <AttributeTarget name="location" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+      </AttributeTarget>
+	        <AttributeTarget name="PRIMARYWORKLOCATION" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="IHG Reporting Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Company" editMode="Permanent" name="company" type="string">
+    <AttributeTargets>
+      <AttributeTarget name="COMPANY" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="RSA Archer Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Location Type" editMode="ReadOnly" extendedNumber="5" name="locationtype" type="string">
+    <AttributeSource name="LOCATIONTYPE">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+	<AttributeTargets>
+      <AttributeTarget name="LOCATIONTYPE" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" id="8a53f2a062703b4601627094abfb00d3" name="IHG Reporting Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Assistant" editMode="Permanent" extendedNumber="1" name="assistant" type="sailpoint.object.Identity"/>
+  <ObjectAttribute displayName="isADSuccess" editMode="ReadOnly" extendedNumber="7" name="isADSuccess" type="string"/>
+  <ObjectAttribute displayName="Worker HR Org Type" editMode="UntilFeedValueChanges" extendedNumber="4" name="workerhrorgtype" type="string">
+    <AttributeSource name="ORGTYPE">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+	<AttributeTargets>
+      <AttributeTarget name="orgtype" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Worker Type" editMode="UntilFeedValueChanges" extendedNumber="3" name="workertype" type="string">
+    <AttributeSource name="WORKERTYPE">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+	<AttributeTargets>
+      <AttributeTarget name="worker_type" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Parent Division" editMode="ReadOnly" extendedNumber="11" name="parentDivision" type="string">
+    <AttributeSource name="PARENTDIVISION">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+	<AttributeTargets>
+      <AttributeTarget name="ecreporting_line" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Termination Date" editMode="UntilFeedValueChanges" extendedNumber="9" name="terminationdate" type="string">
+    <AttributeSource name="TERMINATIONDATE">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+	<AttributeTargets>
+      <AttributeTarget name="term_date" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="IHG_CustomRule_Transform_dateforSnow"/>
+        </RuleRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="UserTypeCD" editMode="UntilFeedValueChanges" extendedNumber="14" name="usertypecd" type="string">
+    <AttributeSource name="USR_TYP_CD">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="PeopleDB Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+	<AttributeTargets>
+      <AttributeTarget name="user_type" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule"  name="IHG_CustomRule_Transform_UserTypeCd"/>
+        </RuleRef>
+      </AttributeTarget>
+	  <AttributeTarget name="USER_TYPE_CD" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="IHG Reporting Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Worker Sub Type" editMode="UntilFeedValueChanges" extendedNumber="12" name="workersubtype" type="string">
+    <AttributeSource name="WORKERSUBTYPE">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeSource name="Worker Sub Type">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="AD Feed Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+	<AttributeTargets>
+      <AttributeTarget name="worker_subtype" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Department" editMode="ReadOnly" name="department" type="string">
+    <AttributeSource name="DEPT_NM">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Suffix" editMode="UntilFeedValueChanges" name="suffix" type="string"/>
+  <ObjectAttribute displayName="Display Name" editMode="UntilFeedValueChanges" name="displayName" standard="true" type="string">
+    <RuleRef>
+      <Reference class="sailpoint.object.Rule" name="IHG_CustomRule_DisplayName"/>
+    </RuleRef>
+    <AttributeSource name="GlobalRule:IHG_CustomRule_DisplayName">
+      <RuleRef>
+        <Reference class="sailpoint.object.Rule" name="IHG_CustomRule_DisplayName"/>
+      </RuleRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Email" editMode="UntilFeedValueChanges" name="email" standard="true" type="string">
+  <ListenerRule>
+      <Reference class="sailpoint.object.Rule"  name="IHG_Rule_ValueChange_HotelGMAttributes"/>
+    </ListenerRule>
+    <AttributeTargets>
+      <AttributeTarget name="EMAILADDRESS" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="Quore Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="Email" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="PeopleDB Authoritative Source"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="mail" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="IHG Corporate Directory"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="EMAILID" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="Revenue Management System"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="EMAILADDRESS" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="Global Reservation System"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="DEFAULTEMAIL" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="RSA Archer Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+	  <AttributeTarget name="email" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+      </AttributeTarget>
+	  <AttributeTarget name="USERNAME" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Clarity Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+	  <AttributeTarget name="EMAIL" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="IHG Reporting Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="mail" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="MyRecruit Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+	   <AttributeTarget name="mail" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="MyRecruit Greater China 洲聘"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="IATA_NBR" editMode="ReadOnly" name="iatanbr" type="string">
+    <AttributeSource name="IATA Number">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="PeopleDB Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Last Name" editMode="UntilFeedValueChanges" name="lastname" standard="true" type="string">
+  <ListenerRule>
+      <Reference class="sailpoint.object.Rule"  name="IHG_Rule_ValueChange_HotelGMAttributes"/>
+    </ListenerRule>
+    <AttributeSource name="LASTNAME">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeSource name="Last Name">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="PeopleDB Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeSource name="Last Name">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="AD Feed Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeSource name="sn">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="IHG Corporate Directory"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeTargets>
+      <AttributeTarget name="LASTNAME" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="Quore Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="Last Name" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="PeopleDB Authoritative Source"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="LASTNAME" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="Revenue Management System"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="LASTNAME" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="RSA Archer Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="LASTNAME" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="Clarity Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+	  <AttributeTarget name="last_name" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+      </AttributeTarget>
+	   <AttributeTarget name="LASTNAME" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="IHG Reporting Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+	  <AttributeTarget name="lastName" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="MyRecruit Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+	   <AttributeTarget name="lastName" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="MyRecruit Greater China 洲聘"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Primary Work Address1" editMode="UntilFeedValueChanges" name="primaryworkaddress1" type="string">
+    <ListenerRule>
+      <Reference class="sailpoint.object.Rule" name="IHG_Rule_ValueChange"/>
+    </ListenerRule>
+    <AttributeSource name="PRIMARYWORKADDRESSLINE1">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeSource name="Street Address">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="AD Feed Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeTargets>
+      <AttributeTarget name="streetAddress" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="IHG Corporate Directory"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="streetAddress" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="Office 365 Cloud"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Primary Work City" editMode="UntilFeedValueChanges" name="primaryworkcity" type="string">
+    <ListenerRule>
+      <Reference class="sailpoint.object.Rule" name="IHG_Rule_ValueChange"/>
+    </ListenerRule>
+    <AttributeSource name="PRIMARYWORKCITY">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeSource name="City">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="AD Feed Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeTargets>
+      <AttributeTarget name="city" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="Office 365 Cloud"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="l" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="IHG Corporate Directory"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Primary Work ISO Country Code" editMode="UntilFeedValueChanges" extendedNumber="8" name="primaryworkisocountrycode" type="string">
+    <ListenerRule>
+      <Reference class="sailpoint.object.Rule" name="IHG_Rule_ValueChange"/>
+    </ListenerRule>
+    <AttributeSource name="PRIMARYWORKISOCOUNTRYCODE">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeSource name="Country Code">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="AD Feed Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeTargets>
+      <AttributeTarget name="c" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="IHG Corporate Directory"/>
+        </ApplicationRef>
+      </AttributeTarget>
+	  <AttributeTarget name="COUNTRYCODE" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="IHG Reporting Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Primary Work State" editMode="UntilFeedValueChanges" name="primaryworkstate" type="string">
+    <ListenerRule>
+      <Reference class="sailpoint.object.Rule" name="IHG_Rule_ValueChange"/>
+    </ListenerRule>
+    <AttributeSource name="PRIMARYWORKSTATE">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeSource name="State">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="AD Feed Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeTargets>
+      <AttributeTarget name="state" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="Office 365 Cloud"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="st" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="IHG Corporate Directory"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Primary Work Zip Code" editMode="UntilFeedValueChanges" name="primaryworkzipcode" type="string">
+    <ListenerRule>
+      <Reference class="sailpoint.object.Rule" name="IHG_Rule_ValueChange"/>
+    </ListenerRule>
+    <AttributeSource name="PRIMARYWORKZIPCODE">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeSource name="Postal Code">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="AD Feed Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeTargets>
+      <AttributeTarget name="postalCode" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="Office 365 Cloud"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="postalCode" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="IHG Corporate Directory"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Start Date" editMode="UntilFeedValueChanges" name="startdate" type="string">
+    <AttributeSource name="STRT_DT">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Worker Mobile Number" editMode="UntilFeedValueChanges" name="workmobilenumber" type="string">
+    <ListenerRule>
+      <Reference class="sailpoint.object.Rule" name="IHG_Rule_ValueChange"/>
+    </ListenerRule>
+    <AttributeSource name="WORKMOBILENUMBER">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeSource name="Mobile Phone">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="PeopleDB Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeSource name="Mobile Phone">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="AD Feed Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeTargets>
+      <AttributeTarget name="mobile" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="Office 365 Cloud"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="Mobile Phone" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="PeopleDB Authoritative Source"/>
+        </ApplicationRef>
+      </AttributeTarget>
+	  <AttributeTarget name="MOBILENUMBER" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Revenue Management System"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="WorkDayUpdated" editMode="ReadOnly" extendedNumber="17" name="workdayupdated" type="string"/>
+  <ObjectAttribute displayName="LMS course completed" editMode="ReadOnly" name="LMSCertificationStatus" type="string"/>
+  <ObjectAttribute displayName="First Name" editMode="UntilFeedValueChanges" name="firstname" standard="true" type="string">
+  <ListenerRule>
+      <Reference class="sailpoint.object.Rule"  name="IHG_Rule_ValueChange_HotelGMAttributes"/>
+    </ListenerRule>
+    <AttributeSource name="FIRSTNAME">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeSource name="First Name">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="PeopleDB Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeSource name="First Name">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="AD Feed Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeSource name="FIRSTNAME">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Global Reservation System"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeSource name="givenName">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="IHG Corporate Directory"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeTargets>
+      <AttributeTarget name="First Name" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="PeopleDB Authoritative Source"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="FIRSTNAME" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="Quore Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="FIRSTNAME" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="Revenue Management System"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="FIRSTNAME" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="RSA Archer Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="FIRSTNAME" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="Clarity Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+	  <AttributeTarget name="first_name" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+      </AttributeTarget>
+	  <AttributeTarget name="FIRSTNAME" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="IHG Reporting Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="firstName" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="MyRecruit Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+	  <AttributeTarget name="firstName" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="MyRecruit Greater China 洲聘"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Manager" editMode="UntilFeedValueChanges" name="manager" standard="true" type="sailpoint.object.Identity">
+    <AttributeSource name="MANAGERWORKERID">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeSource name="manager">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="AD Feed Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeTargets>
+      <AttributeTarget name="manager" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="IHG Corporate Directory"/>
+        </ApplicationRef>
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="IHG_CustomRule_Transform_ManagerinAD"/>
+        </RuleRef>
+      </AttributeTarget>
+      <AttributeTarget name="MANAGERUSERNAME" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="Clarity Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+	  <AttributeTarget name="manager" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+		<RuleRef>
+          <Reference class="sailpoint.object.Rule"  name="IHG_CustomRule_Transform_Manager"/>
+        </RuleRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Source" editMode="UntilFeedValueChanges" extendedNumber="15" name="source" type="string">
+    <AttributeSource name="SOURCE">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeSource name="Source">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="AD Feed Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Inactive" editMode="ReadOnly" name="inactive" standard="true" type="string">
+    <RuleRef>
+      <Reference class="sailpoint.object.Rule" name="IHG_CustomRule_Inactive_Attribute"/>
+    </RuleRef>
+    <AttributeSource name="GlobalRule:IHG_CustomRule_Inactive_Attribute">
+      <RuleRef>
+        <Reference class="sailpoint.object.Rule" name="IHG_CustomRule_Inactive_Attribute"/>
+      </RuleRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Employee Status" editMode="UntilFeedValueChanges" extendedNumber="13" name="employeestatus" type="string">
+    <AttributeSource name="EMPLOYEESTATUS">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Alternate Email" editMode="Permanent" extendedNumber="10" name="altEmail" type="string">
+    <AttributeSource name="ALT_WORK_EMAILADDRESS">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Title" editMode="UntilFeedValueChanges" name="title" type="string">
+    <ListenerRule>
+      <Reference class="sailpoint.object.Rule" name="IHG_Rule_ValueChange"/>
+    </ListenerRule>
+    <AttributeSource name="BUSINESSTITLE">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeTargets>
+      <AttributeTarget name="title" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="IHG Corporate Directory"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="jobTitle" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="Office 365 Cloud"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="TITLE" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="RSA Archer Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+	  <AttributeTarget name="title" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Domain" editMode="UntilFeedValueChanges" extendedNumber="16" name="domain" type="string">
+  <AttributeTargets>
+      <AttributeTarget name="sys_domain" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="user_name" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule"  name="IHG_CustomRule_Transform_UserName"/>
+        </RuleRef>
+      </AttributeTarget>
+	  <AttributeTarget name="DOMAIN" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="IHG Reporting Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+	 </ObjectAttribute>
+  <ObjectAttribute displayName="Network ID" editMode="Permanent" extendedNumber="2" name="networkid" type="string">
+    <AttributeTargets>
+      <AttributeTarget name="network_id" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+      </AttributeTarget>
+	  <AttributeTarget name="NETWORKID" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="IHG Reporting Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="isADRequired" editMode="ReadOnly"  extendedNumber="18" name="ISAD_REQD" type="string">
+    <AttributeSource name="ISAD_REQD">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Immutable ID" editMode="Permanent" extendedNumber="19" name="immutableid" type="string">
+    <AttributeSource name="msds-cloudextensionattribute15">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="IHG Corporate Directory"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeTargets>
+	<AttributeTarget name="immutableid" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="msds-cloudextensionattribute15" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="IHG Corporate Directory"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Work Fax number" editMode="UntilFeedValueChanges" name="workfaxnumber" type="string">
+    <ListenerRule>
+      <Reference class="sailpoint.object.Rule" name="IHG_Rule_ValueChange_HotelGMAttributes"/>
+    </ListenerRule>
+    <AttributeSource name="WORKFAXNUMBER">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeTargets>
+      <AttributeTarget name="facsimileTelephoneNumber" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="IHG Corporate Directory"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="facsimileTelephoneNumber" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="Office 365 Cloud"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Telephone Number" editMode="UntilFeedValueChanges" name="telephonenumber" type="string">
+    <ListenerRule>
+      <Reference class="sailpoint.object.Rule" name="IHG_Rule_ValueChange_HotelGMAttributes"/>
+    </ListenerRule>
+    <AttributeSource name="WORKTELEPHONENUMBER">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeSource name="Office Phone">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="AD Feed Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeSource name="Work Phone">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="PeopleDB Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeTargets>
+      <AttributeTarget name="telephoneNumber" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="IHG Corporate Directory"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="telephoneNumber" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="Office 365 Cloud"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="Work Phone" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" name="PeopleDB Authoritative Source"/>
+        </ApplicationRef>
+      </AttributeTarget>
+	  <AttributeTarget name="phone" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+      </AttributeTarget>
+	  <AttributeTarget name="WORKPHONENUMBER" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Revenue Management System"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Job Description" editMode="UntilFeedValueChanges" extendedNumber="20" name="jobdesc" type="string">
+    <AttributeSource name="JOBDESCRIPTION">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Cost Center Code" editMode="ReadOnly" name="costcentercd" type="string">
+    <AttributeSource name="COSTCENTERCODE">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application" name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+	<AttributeTargets>
+      <AttributeTarget name="cost_center" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="IHG Reward Club No" editMode="UntilFeedValueChanges" name="pcrnbr" type="string"/>
+  <ObjectAttribute displayName="Legal First Name" editMode="ReadOnly" name="legalfirstname" type="string">
+    <AttributeSource name="LEGALFIRSTNAME">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application"  name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeTargets>
+      <AttributeTarget name="legal_first_name" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Legal Last Name" editMode="ReadOnly" name="legallastname" type="string">
+    <AttributeSource name="LEGALLASTNAME">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application"  name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeTargets>
+      <AttributeTarget name="legal_last_name" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+      </AttributeTarget>
+	  <AttributeTarget name="LASTNAME" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" id="8a53f2a062703b4601627094abfb00d3" name="IHG Reporting Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+      <AttributeTarget name="lastName" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application" id="8a53f2a0628b195601628b345d1c0021" name="Lumesse Talentlink Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Company Name" editMode="ReadOnly" name="companyname" type="string">
+    <AttributeSource name="COMPANYNAME">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application"  name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeTargets>
+      <AttributeTarget name="company" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Supervisor Org Cd" editMode="ReadOnly" name="supervisororgcd" type="string">
+    <AttributeSource name="SUPERVISORYORGCODE">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application"  name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+    <AttributeTargets>
+      <AttributeTarget name="supervisor_org_code" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="Service Now"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Job Band" editMode="ReadOnly" name="jobband" type="string">
+    <AttributeSource name="JOBBAND">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application"  name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Department Code" editMode="ReadOnly" name="departmentcode" type="string">
+    <AttributeSource name="DEPT_CD">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application"  name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+	 <AttributeTargets>
+      <AttributeTarget name="DEPARTMENTCODE" provisionAllAccounts="true">
+        <ApplicationRef>
+          <Reference class="sailpoint.object.Application"  name="IHG Reporting Application"/>
+        </ApplicationRef>
+      </AttributeTarget>
+    </AttributeTargets>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Cost Center Name" editMode="ReadOnly" name="costcentername" type="string">
+    <AttributeSource name="COST_CTR_NM">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application"  name="Workday Authoritative Source"/>
+      </ApplicationRef>
+    </AttributeSource>
+  </ObjectAttribute>
+   <ObjectAttribute displayName="User Last Logon" editMode="Permanent" name="userLastLogon" type="string">
+    <AttributeSource name="AppRule: IHG_CustomRule_UserLastLogon IHG Corporate Directory">
+      <ApplicationRef>
+        <Reference class="sailpoint.object.Application"  name="IHG Corporate Directory"/>
+      </ApplicationRef>
+      <RuleRef>
+        <Reference class="sailpoint.object.Rule"  name="IHG_CustomRule_UserLastLogon"/>
+      </RuleRef>
+    </AttributeSource>
+  </ObjectAttribute>
+   <ObjectAttribute displayName="LN FN" editMode="UntilFeedValueChanges" name="extended22" type="string">
+    <RuleRef>
+      <Reference class="sailpoint.object.Rule"  name="IHG_CustomRule_LN_FN"/>
+    </RuleRef>
+    <AttributeSource name="GlobalRule:IHG_CustomRule_LN_FN">
+      <RuleRef>
+        <Reference class="sailpoint.object.Rule" name="IHG_CustomRule_LN_FN"/>
+      </RuleRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="FN LN" editMode="UntilFeedValueChanges" name="extended21" type="string">
+    <RuleRef>
+      <Reference class="sailpoint.object.Rule" name="IHG_CustomRule_FN_LN"/>
+    </RuleRef>
+    <AttributeSource name="GlobalRule:IHG_CustomRule_FN_LN">
+      <RuleRef>
+        <Reference class="sailpoint.object.Rule"  name="IHG_CustomRule_FN_LN"/>
+      </RuleRef>
+    </AttributeSource>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="All Hotels" editMode="Permanent" name="extended23" type="string"/>
+</ObjectConfig>

@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE ObjectConfig PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<ObjectConfig name="Application">
+  <ObjectAttribute displayName="Holidex Code" editMode="Permanent" extendedNumber="1" name="app_holidexCode">
+    <Description>Holidex Code</Description>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Hotel ID" editMode="Permanent" name="app_HotelId">
+    <Description>Hotel ID</Description>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Facility ID" editMode="Permanent" extendedNumber="2" name="app_facilityID">
+    <Description>Facility ID</Description>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Brand Code" editMode="Permanent" extendedNumber="3" name="app_brandCode">
+    <Description>Brand Code</Description>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Country/Region Name" editMode="Permanent" extendedNumber="4" name="app_countryName">
+    <Description>Country/Region Name</Description>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="State" editMode="Permanent" extendedNumber="7" name="app_state">
+    <Description>State</Description>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="City" editMode="Permanent" extendedNumber="6" name="app_city">
+    <Description>City</Description>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Street Address" editMode="Permanent" extendedNumber="9" name="app_streetAddress">
+    <Description>Street Address</Description>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Postal Code" editMode="Permanent" extendedNumber="8" name="app_postalCode">
+    <Description>Postal Code</Description>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="ManagementType Code" editMode="Permanent" extendedNumber="13" name="app_managementTypeCode">
+    <Description>ManagementType Code</Description>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="isMigratedHotel" editMode="Permanent" extendedNumber="12" name="app_isMigratedHotel" type="boolean">
+    <DefaultValue>
+      <Boolean/>
+    </DefaultValue>
+    <Description>isMigratedHotel</Description>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Chain Code" editMode="Permanent" extendedNumber="16" name="app_chainCode">
+    <Description>Chain Code</Description>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Region Text" editMode="Permanent" extendedNumber="17" name="app_regionText"/>
+  <ObjectAttribute displayName="Growth Updated" editMode="Permanent" name="growthUpdated" type="boolean">
+    <DefaultValue>
+      <Boolean/>
+    </DefaultValue>
+    <Description>Growth Updated</Description>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Region" editMode="Permanent" name="app_region">
+    <Description>Hotel's Region</Description>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="is_Corporate" editMode="Permanent" extendedNumber="5" name="is_Corporate" type="boolean">
+    <DefaultValue>
+      <Boolean/>
+    </DefaultValue>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="ISO CountryCode" editMode="Permanent" extendedNumber="10" name="app_isocountrycode"/>
+  <ObjectAttribute displayName="Brand Desc" editMode="Permanent" extendedNumber="11" name="app_brandDesc"/>
+  <ObjectAttribute displayName="GRS Brand Code" editMode="Permanent" name="grsBrandCode"/>
+  <ObjectAttribute displayName="GRS Region Code" editMode="Permanent" name="grsRegionCode"/>
+  <ObjectAttribute displayName="Tagged Application" editMode="Permanent" extendedNumber="15" name="taggedApplication">
+    <Description>Tagged Application details to Identity the Target Application to which the MyID application is tagged to or used for.</Description>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="General Manager" editMode="Permanent" extendedNumber="14" name="generalManager" type="sailpoint.object.Identity"/>
+  <ObjectAttribute displayName="FPS Lead" editMode="Permanent" extendedNumber="18" name="app_fpsLead" type="sailpoint.object.Identity">
+    <Description>FPS Lead</Description>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Hotel Status" editMode="Permanent" extendedNumber="19" name="app_hotelStatus">
+    <Description>Hotel Status</Description>
+  </ObjectAttribute>
+  <ObjectAttribute displayName="Hotel Growth Status" editMode="Permanent" extendedNumber="20" name="app_hotelGrowthStatus">
+    <Description>Hotel Growth Status Code</Description>
+  </ObjectAttribute>
+</ObjectConfig>
