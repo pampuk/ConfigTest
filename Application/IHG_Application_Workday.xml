@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Application assignedScopePath="8a53f2a061563be60161658dbe7d0742"  authoritative="true" connector="sailpoint.connector.JDBCConnector" featuresString="DISCOVER_SCHEMA, PROVISIONING, SYNC_PROVISIONING, DIRECT_PERMISSIONS" icon="databaseIcon" name="Workday Authoritative Source" type="JDBC">
+<AssignedScope>
+    <Reference class="sailpoint.object.Scope"  name="Workday Scope"/>
+  </AssignedScope> 
+ <AccountCorrelationConfig>
+    <Reference class="sailpoint.object.CorrelationConfig" name="IHG_CorrelationRule_Workday"/>
+  </AccountCorrelationConfig>
+  <Attributes>
+    <Map>
+      <entry key="SQL" value="select * from (&#xD;&#xA;SELECT wdfeed.FIRSTNAME, wdfeed.LASTNAME, wdfeed.WORKERID, wdfeed.PRIMARYWORKLOCATION, wdfeed.PRIMARYWORKADDRESSLINE1, wdfeed.PRIMARYWORKADDRESSLINE2, wdfeed.PRIMARYWORKCITY, wdfeed.PRIMARYWORKSTATE, wdfeed.PRIMARYWORKZIPCODE, wdfeed.PRIMARYWORKISOCOUNTRYCODE, wdfeed.WORKERTYPE, wdfeed.BUSINESSTITLE, wdfeed.MANAGERWORKERID, wdfeed.PARENTDIVISION, wdfeed.WORKTELEPHONENUMBER, wdfeed.WORKMOBILENUMBER, wdfeed.WORKFAXNUMBER, wdfeed.WORKEMAILADDRESS, wdfeed.ALT_WORK_EMAILADDRESS, wdfeed.EMPLOYEESTATUS, wdfeed.DOMAIN, wdfeed.NETWORKID, wdfeed.ORGTYPE, wdfeed.ISMANAGER, wdfeed.WORKERSUBTYPE, wdfeed.LOCATIONTYPE, wdfeed.TERMINATIONDATE, wdfeed.ACTION, wdfeed.JOBBAND, wdfeed.WORKDAYUPDATED, wdfeed.DEPT_NM, wdfeed.STRT_DT, wdfeed.DEPT_CD, wdfeed.COST_CTR_NM, wdfeed.ISAD_REQD, wdfeed.WRK_DY_JOB_CD &quot;JOBCODE&quot;, wdfeed.WRK_DY_JOB_TITLE_TXT &quot;JOBTITLE&quot;, wdfeed.WRK_DY_JOB_FAMILY_NM&quot;JOBFAMILY&quot;, wdfeed.LGL_FRST_NM &quot;LEGALFIRSTNAME&quot;, wdfeed.LGL_LST_NM &quot;LEGALLASTNAME&quot;, wdfeed.COST_CTR_CD &quot;COSTCENTERCODE&quot;, wdfeed.COMPANY_NM &quot;COMPANYNAME&quot;, wdfeed.SUPERVISORY_ORG_CD &quot;SUPERVISORYORGCODE&quot; FROM IHG_WORKDAYFEED_IDM_OI wdfeed, spt_identity idn WHERE idn.name = wdfeed.WORKERID and (((idn.extended3=&apos;EE&apos;) OR (idn.extended3=&apos;CW&apos; and idn.extended4=&apos;Corporate&apos;)) OR ((wdfeed.workertype=&apos;EE&apos;) OR (wdfeed.orgtype = &apos;Corporate&apos; and wdfeed.workertype = &apos;CW&apos;)))&#xD;&#xA;union&#xD;&#xA;SELECT FIRSTNAME,&#xD;&#xA;  LASTNAME,&#xD;&#xA;  WORKERID,&#xD;&#xA;  PRIMARYWORKLOCATION,&#xD;&#xA;  PRIMARYWORKADDRESSLINE1,&#xD;&#xA;  PRIMARYWORKADDRESSLINE2,&#xD;&#xA;  PRIMARYWORKCITY,&#xD;&#xA;  PRIMARYWORKSTATE,&#xD;&#xA;  PRIMARYWORKZIPCODE,&#xD;&#xA;  PRIMARYWORKISOCOUNTRYCODE,&#xD;&#xA;  WORKERTYPE,&#xD;&#xA;  BUSINESSTITLE,&#xD;&#xA;  MANAGERWORKERID,&#xD;&#xA;  PARENTDIVISION,&#xD;&#xA;  WORKTELEPHONENUMBER,&#xD;&#xA;  WORKMOBILENUMBER,&#xD;&#xA;  WORKFAXNUMBER,&#xD;&#xA;  WORKEMAILADDRESS,&#xD;&#xA;  ALT_WORK_EMAILADDRESS,&#xD;&#xA;  EMPLOYEESTATUS,&#xD;&#xA;  DOMAIN,&#xD;&#xA;  NETWORKID,&#xD;&#xA;  ORGTYPE,&#xD;&#xA;  ISMANAGER,&#xD;&#xA;  WORKERSUBTYPE,&#xD;&#xA;  LOCATIONTYPE,&#xD;&#xA;  TERMINATIONDATE,&#xD;&#xA;  ACTION,&#xD;&#xA;  JOBBAND,&#xD;&#xA;  WORKDAYUPDATED,&#xD;&#xA;  DEPT_NM,&#xD;&#xA;  STRT_DT,&#xD;&#xA;  DEPT_CD,&#xD;&#xA;  COST_CTR_NM,&#xD;&#xA; ISAD_REQD,&#xD;&#xA; WRK_DY_JOB_CD &quot;JOBCODE&quot;,&#xD;&#xA;WRK_DY_JOB_TITLE_TXT &quot;JOBTITLE&quot;,&#xD;&#xA;WRK_DY_JOB_FAMILY_NM &quot;JOBFAMILY&quot;,&#xD;&#xA;LGL_FRST_NM &quot;LEGALFIRSTNAME&quot;,&#xD;&#xA;LGL_LST_NM &quot;LEGALLASTNAME&quot;,&#xD;&#xA;COST_CTR_CD &quot;COSTCENTERCODE&quot;,&#xD;&#xA;COMPANY_NM &quot;COMPANYNAME&quot;,&#xD;&#xA;SUPERVISORY_ORG_CD &quot;SUPERVISORYORGCODE&quot;&#xD;&#xA;FROM IHG_WORKDAYFEED_IDM_OI wdfeed WHERE not exists (select 1 from spt_identity where name = wdfeed.Workerid ))"/>
+      <entry key="afterProvisioningRule"/>
+      <entry key="aggregationMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="app_HotelId"/>
+      <entry key="app_brandCode"/>
+      <entry key="app_brandDesc"/>
+      <entry key="app_chainCode"/>
+      <entry key="app_city"/>
+      <entry key="app_countryName"/>
+      <entry key="app_facilityID"/>
+      <entry key="app_holidexCode"/>
+      <entry key="app_isMigratedHotel">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="app_isocountrycode"/>
+      <entry key="app_managementTypeCode"/>
+      <entry key="app_postalCode"/>
+      <entry key="app_region"/>
+      <entry key="app_regionText"/>
+      <entry key="app_state"/>
+      <entry key="app_streetAddress"/>
+      <entry key="beforeProvisioningRule"/>
+      <entry key="buildMapRule" value="IHG_BuildMapRule_Workday"/>
+      <entry key="compositeDefinition"/>
+      <entry key="deltaTable"/>
+      <entry key="driverClass" value="%%JDBC_ORACLE_DRIVER%%"/>
+      <entry key="getDeltaSQL"/>
+      <entry key="getObjectSQL" value="SELECT FIRSTNAME,&#xD;&#xA;  LASTNAME,&#xD;&#xA;  WORKERID,&#xD;&#xA;  PRIMARYWORKLOCATION,&#xD;&#xA;  PRIMARYWORKADDRESSLINE1,&#xD;&#xA;  PRIMARYWORKADDRESSLINE2,&#xD;&#xA;  PRIMARYWORKCITY,&#xD;&#xA;  PRIMARYWORKSTATE,&#xD;&#xA;  PRIMARYWORKZIPCODE,&#xD;&#xA;  PRIMARYWORKISOCOUNTRYCODE,&#xD;&#xA;  WORKERTYPE,&#xD;&#xA;  BUSINESSTITLE,&#xD;&#xA;  MANAGERWORKERID,&#xD;&#xA;  PARENTDIVISION,&#xD;&#xA;  WORKTELEPHONENUMBER,&#xD;&#xA;  WORKMOBILENUMBER,&#xD;&#xA;  WORKFAXNUMBER,&#xD;&#xA;  WORKEMAILADDRESS,&#xD;&#xA;  ALT_WORK_EMAILADDRESS,&#xD;&#xA;  EMPLOYEESTATUS,&#xD;&#xA;  DOMAIN,&#xD;&#xA;  NETWORKID,&#xD;&#xA;  ORGTYPE,&#xD;&#xA;  ISMANAGER,&#xD;&#xA;  WORKERSUBTYPE,&#xD;&#xA;  LOCATIONTYPE,&#xD;&#xA;  TERMINATIONDATE,&#xD;&#xA;  ACTION,&#xD;&#xA;  JOBBAND,&#xD;&#xA;  WORKDAYUPDATED,&#xD;&#xA;  DEPT_NM,&#xD;&#xA;  STRT_DT,&#xD;&#xA;  DEPT_CD,&#xD;&#xA;  COST_CTR_NM,&#xD;&#xA;ISAD_REQD,&#xD;&#xA;WRK_DY_JOB_CD &quot;JOBCODE&quot;,&#xD;&#xA;WRK_DY_JOB_TITLE_TXT &quot;JOBTITLE&quot;,&#xD;&#xA;WRK_DY_JOB_FAMILY_NM &quot;JOBFAMILY&quot;,&#xD;&#xA;COST_CTR_CD &quot;COSTCENTERCODE&quot;&#xD;&#xA;FROM IHG_WORKDAYFEED_IDM_OI where WORKERID=&apos;$(identity)&apos;"/>
+      <entry key="growthUpdated">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="grsBrandCode"/>
+      <entry key="grsRegionCode"/>
+      <entry key="isPermissionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="is_Corporate">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="managerCorrelationFilter">
+        <value>
+          <Filter operation="EQ" property="name" value="MANAGERWORKERID"/>
+        </value>
+      </entry>
+      <entry key="mergeRows">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionAttributeScope" value="entitlements"/>
+      <entry key="nativeChangeDetectionAttributes"/>
+      <entry key="nativeChangeDetectionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionOperations"/>
+      <entry key="partitionMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="partitionStatements"/>
+      <entry key="password" value="%%IDM_JDBC_PASSWORD%%"/>
+      <entry key="provisionRule" value="operationRule"/>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="taggedApplication"/>
+      <entry key="templateApplication" value="JDBC Template"/>
+      <entry key="testConnSQL"/>
+      <entry key="url" value="%%IDM_JDBC_URL%%"/>
+      <entry key="useExecuteQuery">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureDelta">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureDirectPermission">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureGetObject">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedurePartition">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureSqlStmt">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureTestConn">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="user" value="%%IDM_JDBC_USERNAME%%"/>
+    </Map>
+  </Attributes>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <Schemas>
+    <Schema displayAttribute="WORKERID" identityAttribute="WORKERID" nativeObjectType="account" objectType="account" permissionsRemediationModificationType="None">
+      <AttributeDefinition name="FIRSTNAME" type="string"/>
+      <AttributeDefinition name="LASTNAME" type="string"/>
+      <AttributeDefinition name="WORKERID" type="string"/>
+      <AttributeDefinition name="PRIMARYWORKLOCATION" type="string"/>
+      <AttributeDefinition name="PRIMARYWORKADDRESSLINE1" type="string"/>
+      <AttributeDefinition name="PRIMARYWORKADDRESSLINE2" type="string"/>
+      <AttributeDefinition name="PRIMARYWORKCITY" type="string"/>
+      <AttributeDefinition name="PRIMARYWORKSTATE" type="string"/>
+      <AttributeDefinition name="PRIMARYWORKZIPCODE" type="string"/>
+      <AttributeDefinition name="PRIMARYWORKISOCOUNTRYCODE" type="string"/>
+      <AttributeDefinition name="WORKERTYPE" type="string"/>
+      <AttributeDefinition name="BUSINESSTITLE" type="string"/>
+      <AttributeDefinition name="MANAGERWORKERID" type="string"/>
+      <AttributeDefinition name="PARENTDIVISION" type="string"/>
+      <AttributeDefinition name="WORKTELEPHONENUMBER" type="string"/>
+      <AttributeDefinition name="WORKMOBILENUMBER" type="string"/>
+      <AttributeDefinition name="WORKFAXNUMBER" type="string"/>
+      <AttributeDefinition name="WORKEMAILADDRESS" type="string"/>
+      <AttributeDefinition name="ALT_WORK_EMAILADDRESS" type="string"/>
+      <AttributeDefinition name="EMPLOYEESTATUS" type="string"/>
+      <AttributeDefinition name="DOMAIN" type="string"/>
+      <AttributeDefinition name="NETWORKID" type="string"/>
+      <AttributeDefinition name="ORGTYPE" type="string"/>
+      <AttributeDefinition name="ISMANAGER" type="string"/>
+      <AttributeDefinition name="WORKERSUBTYPE" type="string"/>
+      <AttributeDefinition name="LOCATIONTYPE" type="string"/>
+      <AttributeDefinition name="TERMINATIONDATE" type="string"/>
+      <AttributeDefinition name="ACTION" type="string"/>
+      <AttributeDefinition name="JOBBAND" type="string"/>
+      <AttributeDefinition name="WORKDAYUPDATED" type="string"/>
+      <AttributeDefinition name="DEPT_NM" type="string"/>
+      <AttributeDefinition name="STRT_DT" type="string"/>
+      <AttributeDefinition name="SOURCE" type="string"/>
+      <AttributeDefinition name="ISAD_REQD" type="string"/>
+      <AttributeDefinition name="JOBDESCRIPTION" type="string"/>
+      <AttributeDefinition name="JOBCODE" type="string"/>
+      <AttributeDefinition name="JOBTITLE" type="string"/>
+      <AttributeDefinition name="JOBFAMILY" type="string"/>
+      <AttributeDefinition name="LEGALFIRSTNAME" type="string"/>
+      <AttributeDefinition name="LEGALLASTNAME" type="string"/>
+      <AttributeDefinition name="COSTCENTERCODE" type="string"/>
+      <AttributeDefinition name="COMPANYNAME" type="string"/>
+      <AttributeDefinition name="SUPERVISORYORGCODE" type="string"/>
+      <AttributeDefinition name="DEPT_CD" type="string"/>
+      <AttributeDefinition name="COST_CTR_NM" type="string"/>
+    </Schema>
+  </Schemas>
+  <ApplicationScorecard/>
+</Application>

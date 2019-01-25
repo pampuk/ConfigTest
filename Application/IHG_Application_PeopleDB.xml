@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Application authoritative="true" connector="sailpoint.connector.JDBCConnector"  featuresString="DISCOVER_SCHEMA,  PROVISIONING, SYNC_PROVISIONING, DIRECT_PERMISSIONS, ACCOUNT_ONLY_REQUEST" icon="databaseIcon"   name="PeopleDB Authoritative Source" type="JDBC">
+  <AccountCorrelationConfig>
+    <Reference class="sailpoint.object.CorrelationConfig"  name="IHG_CorrelationRule_PDB"/>
+  </AccountCorrelationConfig>
+  <AssignedScope>
+    <Reference class="sailpoint.object.Scope"  name="PeopleDB Authoritative Source"/>
+  </AssignedScope>
+  <Attributes>
+    <Map>
+      <entry key="SQL" value="SELECT &#xD;&#xA;DISTINCT idfeed.emp_id &quot;EMP_ID&quot;&#xD;&#xA;, idfeed.PERSON_ID &quot;Person ID&quot;&#xD;&#xA;, idfeed.frst_nm &quot;First Name&quot;&#xD;&#xA;, idfeed.iata_nbr &quot;IATA Number&quot;&#xD;&#xA;, idfeed.lst_nm &quot;Last Name&quot;&#xD;&#xA;, idfeed.domain &quot;AD Domain&quot;&#xD;&#xA;, idfeed.network_id &quot;Network ID&quot;&#xD;&#xA;, idfeed.email_id &quot;Email&quot;&#xD;&#xA;, idfeed.pcr_nbr &quot;PCR Number&quot;&#xD;&#xA;, idfeed.work_phone &quot;Work Phone&quot;&#xD;&#xA;, idfeed.mobile_phone &quot;Mobile Phone&quot;&#xD;&#xA;, idfeed.usr_stat &#xD;&#xA;, rolfeed.usr_typ_cd &#xD;&#xA;, rolfeed.hldx_cd&#xD;&#xA;from ihg_pdb_identity_feed idfeed &#xD;&#xA;LEFT OUTER JOIN ihg_pdb_role_feed rolfeed ON rolfeed.emp_id = idfeed.emp_id&#xD;&#xA;WHERE idfeed.usr_stat IN (&apos;E&apos;,&apos;L&apos;)  &#xD;&#xA;And rolfeed.usr_typ_cd in (&apos;A&apos;,&apos;V&apos;,&apos;W&apos;,&apos;F&apos;,&apos;H&apos;,&apos;C&apos;,&apos;T&apos;) AND rolfeed.prim_loc_ind=&apos;P&apos; and idfeed.emp_id in (&apos;K138231&apos;)"/>
+      <entry key="aggregationMode">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="app_HotelId"/>
+      <entry key="app_brandCode"/>
+      <entry key="app_brandDesc"/>
+      <entry key="app_chainCode"/>
+      <entry key="app_city"/>
+      <entry key="app_countryName"/>
+      <entry key="app_facilityID"/>
+      <entry key="app_holidexCode"/>
+      <entry key="app_isMigratedHotel">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="app_isocountrycode"/>
+      <entry key="app_managementTypeCode"/>
+      <entry key="app_postalCode"/>
+      <entry key="app_region"/>
+      <entry key="app_regionText"/>
+      <entry key="app_state"/>
+      <entry key="app_streetAddress"/>
+      <entry key="compositeDefinition"/>
+      <entry key="deltaTable"/>
+      <entry key="disableOrderingCheck" value="true"/>
+      <entry key="driverClass" value="%%JDBC_ORACLE_DRIVER%%"/>
+      <entry key="getDeltaSQL"/>
+      <entry key="getObjectSQL" value="SELECT &#xD;&#xA;DISTINCT idfeed.emp_id &quot;EMP_ID&quot;&#xD;&#xA;, idfeed.PERSON_ID &quot;Person ID&quot;&#xD;&#xA;, idfeed.frst_nm &quot;First Name&quot;&#xD;&#xA;, idfeed.iata_nbr &quot;IATA Number&quot;&#xD;&#xA;, idfeed.lst_nm &quot;Last Name&quot;&#xD;&#xA;, idfeed.domain &quot;AD Domain&quot;&#xD;&#xA;, idfeed.network_id &quot;Network ID&quot;&#xD;&#xA;, idfeed.email_id &quot;Email&quot;&#xD;&#xA;, idfeed.pcr_nbr &quot;PCR Number&quot;&#xD;&#xA;, idfeed.work_phone &quot;Work Phone&quot;&#xD;&#xA;, idfeed.mobile_phone &quot;Mobile Phone&quot;&#xD;&#xA;, idfeed.usr_stat &#xD;&#xA;, rolfeed.usr_typ_cd &#xD;&#xA;, rolfeed.hldx_cd&#xD;&#xA;from ihg_pdb_identity_feed idfeed &#xD;&#xA;LEFT OUTER JOIN ihg_pdb_role_feed rolfeed ON rolfeed.emp_id = idfeed.emp_id&#xD;&#xA;WHERE idfeed.usr_stat IN (&apos;E&apos;,&apos;L&apos;)  &#xD;&#xA;And rolfeed.usr_typ_cd in (&apos;A&apos;,&apos;V&apos;,&apos;W&apos;,&apos;F&apos;,&apos;H&apos;,&apos;C&apos;,&apos;T&apos;) AND rolfeed.prim_loc_ind=&apos;P&apos; where idfeed.emp_id=&apos;$(identity)&apos;"/>
+      <entry key="growthUpdated">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="grsBrandCode"/>
+      <entry key="grsRegionCode"/>
+      <entry key="isPermissionEnabled">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="is_Corporate">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="jdbcCreateProvisioningRule" value="IHG_ProvisioningRule_PeopleDB_Authoritative_Insert"/>
+      <entry key="jdbcDisableProvisioningRule" value="IHG_ProvisioningRule_PeopleDB_Authoritative_Disable"/>
+      <entry key="jdbcEnableProvisioningRule" value="IHG_ProvisioningRule_PeopleDB_Authoritative_Update"/>
+      <entry key="jdbcModifyProvisioningRule" value="IHG_ProvisioningRule_PeopleDB_Authoritative_Update"/>
+      <entry key="mergeRows">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionAttributeScope" value="entitlements"/>
+      <entry key="nativeChangeDetectionAttributes"/>
+      <entry key="nativeChangeDetectionEnabled">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionOperations"/>
+      <entry key="partitionMode">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="partitionStatements"/>
+     <entry key="password" value="%%IDM_JDBC_PASSWORD%%"/>
+      <entry key="provisionRule" value="operationRule"/>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="taggedApplication"/>
+      <entry key="templateApplication" value="JDBC Template"/>
+      <entry key="url" value="%%IDM_JDBC_URL%%"/>
+      <entry key="useExecuteQuery">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+       <entry key="user" value="%%IDM_JDBC_USERNAME%%"/>
+    </Map>
+  </Attributes>
+  <CreationRule>
+    <Reference class="sailpoint.object.Rule"  name="IHG_CustomRule_PDBIdentityCreation"/>
+  </CreationRule>
+  <Owner>
+    <Reference class="sailpoint.object.Identity"  name="spadmin"/>
+  </Owner>
+  <Schemas>
+    <Schema  displayAttribute="EMP_ID"  identityAttribute="EMP_ID"  nativeObjectType="account" objectType="account" permissionsRemediationModificationType="None">
+      <AttributeDefinition name="EMP_ID" type="string"/>
+      <AttributeDefinition name="Person ID" type="string"/>
+      <AttributeDefinition name="First Name" type="string"/>
+      <AttributeDefinition name="IATA Number" type="string"/>
+      <AttributeDefinition name="Last Name" type="string"/>
+      <AttributeDefinition name="AD Domain" type="string"/>
+      <AttributeDefinition name="Network ID" type="string"/>
+      <AttributeDefinition name="Email" type="string"/>
+      <AttributeDefinition name="PCR Number" type="string"/>
+      <AttributeDefinition name="Work Phone" type="string"/>
+      <AttributeDefinition name="Mobile Phone" type="string"/>
+      <AttributeDefinition name="USR_STAT" type="string"/>
+      <AttributeDefinition name="USR_TYP_CD" type="string"/>
+      <AttributeDefinition name="HLDX_CD" type="string"/>
+    </Schema>
+  </Schemas>
+</Application>

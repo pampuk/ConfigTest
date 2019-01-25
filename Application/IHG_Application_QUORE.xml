@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Application connector="sailpoint.connector.JDBCConnector" featuresString="DISCOVER_SCHEMA, PROVISIONING, SYNC_PROVISIONING, DIRECT_PERMISSIONS" icon="databaseIcon" name="Quore Application" type="JDBC">
+  <AccountCorrelationConfig>
+    <Reference class="sailpoint.object.CorrelationConfig" name="IHG_Correlation_Quore"/>
+  </AccountCorrelationConfig>
+    <AssignedScope>
+    <Reference class="sailpoint.object.Scope"  name="Quore"/>
+  </AssignedScope>
+  <Attributes>
+    <Map>
+      <entry key="SQL" value="select 'a' FIRSTNAME,'a' LASTNAME,'a' EMAILADDRESS,'a' LANGUAGE,'a' DISABLED,'a' DELETED,'a' IMMUTABLE_ID,'a' QUORE_ROLE_DTLS,'a' DUMMY_ACL,'a' DUMMY_ACLDESC,'a' QUORE_ACCOUNT_UPDATED from dual"/>
+      <entry key="afterProvisioningRule" value="IHG_CustomRule_QUORE_AfterProvisioning"/>
+      <entry key="aggregationMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="app_HotelId"/>
+      <entry key="app_brandCode"/>
+      <entry key="app_brandDesc"/>
+      <entry key="app_chainCode"/>
+      <entry key="app_city"/>
+      <entry key="app_countryName"/>
+      <entry key="app_facilityID"/>
+      <entry key="app_holidexCode"/>
+      <entry key="app_holidexCodetb"/>
+      <entry key="app_isMigratedHotel">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="app_isocountrycode"/>
+      <entry key="app_managementTypeCode"/>
+      <entry key="app_postalCode"/>
+      <entry key="app_region"/>
+      <entry key="app_regionText"/>
+      <entry key="app_state"/>
+      <entry key="app_streetAddress"/>
+      <entry key="compositeDefinition"/>
+      <entry key="deltaTable"/>
+      <entry key="driverClass" value="%%JDBC_ORACLE_DRIVER%%"/>
+      <entry key="getDeltaSQL"/>
+      <entry key="growthUpdated">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="grsBrandCode"/>
+      <entry key="isPermissionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="is_Corporate">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="jdbcCreateProvisioningRule" value="IHG_ProvisioningRule_QUORE_JDBCCreateProvision"/>
+      <entry key="jdbcDisableProvisioningRule" value="IHG_ProvisioningRule_QUORE_JDBCDisableProvision"/>
+      <entry key="jdbcModifyProvisioningRule" value="IHG_ProvisioningRule_QUORE_JDBCModifyProvision"/>
+      <entry key="mergeRows">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionAttributeScope" value="entitlements"/>
+      <entry key="nativeChangeDetectionAttributes"/>
+      <entry key="nativeChangeDetectionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionOperations"/>
+      <entry key="partitionMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="partitionStatements"/>
+      <entry key="password" value="%%IDM_JDBC_PASSWORD%%"/>
+      <entry key="provisionRule" value="operationRule"/>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="taggedApplication"/>
+      <entry key="templateApplication" value="JDBC Template"/>
+      <entry key="url" value="%%IDM_JDBC_URL%%"/>
+      <entry key="useExecuteQuery">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="user" value="%%IDM_JDBC_USERNAME%%"/>
+    </Map>
+  </Attributes>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <ProvisioningForms>
+    <Form name="Quore Create Provisioning Form" objectType="account" type="Create">
+      <Description>This form will be used to create Quore account and role assignment.</Description>
+      <Field displayName="FIRSTNAME" filterString="" helpKey="First Name of Identity" name="FIRSTNAME" required="true" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="Create JDBC First Name"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="LASTNAME" filterString="" helpKey="Last Name of Identity" name="LASTNAME" required="true" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="Create JDBC Last Name"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="LANGUAGE" filterString="" helpKey="Language from Plan" name="LANGUAGE" type="string" value="MYID_replaceChar2"/>
+      <Field displayName="EMAILADDRESS" filterString="" helpKey="Email Address " name="EMAILADDRESS" required="true" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="Create JDBC Email"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="DISABLED" filterString="" helpKey="status disabled" name="DISABLED" type="string" value="false"/>
+      <Field displayName="DUMMY_ACL" filterString="" helpKey="for GRS entitlement and ACL" name="DUMMY_ACL" required="true" type="string" value="MYID_replaceChar1"/>
+      <Field displayName="DUMMY_ACLDESC" filterString="" name="DUMMY_ACLDESC" required="true" type="string" value="MYID_replaceChar3"/>
+    </Form>
+    <Form name="Quore Modify Provisioning Form" objectType="account" type="Update">
+      <Attributes>
+        <Map>
+          <entry key="IIQTemplateOwnerDefinition">
+            <value>
+              <DynamicValue value=""/>
+            </value>
+          </entry>
+        </Map>
+      </Attributes>
+      <Description>This form will be used to modify Quore account and role assignment.</Description>
+      <Field displayName="DUMMY_ACL" filterString="" name="DUMMY_ACL" required="true" type="string" value="MYID_replaceChar1"/>
+      <Field displayName="DUMMY_ACLDESC" filterString="" helpKey="acl description" name="DUMMY_ACLDESC" required="true" type="string" value="MYID_replaceChar3"/>
+      <Field displayName="LANGUAGE" filterString="" helpKey="lang" name="LANGUAGE" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="getLanguageforEnterpriseforLink"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="QUORE_FIRSTNAME" filterString="" helpKey="firstname of user" name="FIRSTNAME" required="true" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="Create JDBC First Name"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="QUORE_LASTNAME" filterString="" helpKey="lastname of user" name="LASTNAME" required="true" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="Create JDBC Last Name"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="EMAILADDRESS" filterString="" helpKey="email of user" name="EMAILADDRESS" required="true" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="Create JDBC Email"/>
+        </RuleRef>
+      </Field>
+    </Form>
+  </ProvisioningForms>
+  <Schemas>
+    <Schema displayAttribute="IMMUTABLE_ID" identityAttribute="IMMUTABLE_ID" nativeObjectType="account" objectType="account" permissionsRemediationModificationType="None">
+      <AttributeDefinition name="FIRSTNAME" type="string"/>
+      <AttributeDefinition name="LASTNAME" type="string"/>
+      <AttributeDefinition name="EMAILADDRESS" type="string"/>
+      <AttributeDefinition name="LANGUAGE" type="string"/>
+      <AttributeDefinition name="DISABLED" type="string"/>
+      <AttributeDefinition name="DELETED" type="string"/>
+      <AttributeDefinition name="IMMUTABLE_ID" type="string"/>
+      <AttributeDefinition entitlement="true" managed="true" multi="true" name="QUORE_ROLE_DTLS" type="string"/>
+      <AttributeDefinition name="DUMMY_ACL" type="string"/>
+      <AttributeDefinition name="DUMMY_ACLDESC" type="string"/>
+      <AttributeDefinition name="QUORE_ACCOUNT_UPDATED" type="string"/>
+    </Schema>
+  </Schemas>
+  <ApplicationScorecard/>
+</Application>

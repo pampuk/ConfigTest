@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Application connector="sailpoint.connector.JDBCConnector" featuresString="DISCOVER_SCHEMA, PROVISIONING, SYNC_PROVISIONING, DIRECT_PERMISSIONS" icon="databaseIcon" name="Enterprise Application" type="JDBC">
+  <AccountCorrelationConfig>
+    <Reference class="sailpoint.object.CorrelationConfig" name="IHG_Correlation_Enterprise"/>
+  </AccountCorrelationConfig>
+  <AssignedScope>
+    <Reference class="sailpoint.object.Scope"  name="Enterprise"/>
+  </AssignedScope>
+  <Attributes>
+    <Map>
+      <entry key="SQL" value="select * from (select FIRSTNAME,LASTNAME,EMAILADDRESS,GRS_LANGUAGE &quot;LANGUAGE&quot;,DISABLED,DELETED, IMMUTABLE_ID,GRS_ROLE_NAME GRS_ENTITLEMENT,&#xD;&#xA;&apos;Enterprise Role: &apos; || GRS_ROLE_NAME || &apos; at ACL: &apos; || ACL || &apos; as Role Assigner: &apos; || ROLE_ASSIGNER_PERMISSION ENTERPRISE_ROLE_DTLS&#xD;&#xA;from ihg_grs where DEACTIVATION_DATE is null and lower(ENVIRONMENT)=&apos;all&apos; and DELETED=&apos;false&apos;  and lower(GRS_ROLE_TYPE)=&apos;composite&apos; and GRS_UPDATED=&apos;Y&apos;&#xD;&#xA;Union&#xD;&#xA;Select Distinct Firstname,Lastname,Emailaddress,Grs_Language &quot;LANGUAGE&quot;,Disabled,Deleted, Immutable_Id, Null, Null&#xD;&#xA;from ihg_grs grs where lower(GRS_ROLE_TYPE)=&apos;composite&apos; and not exists(select 1 from ihg_grs igrs &#xD;&#xA;where igrs.Deactivation_Date is null and igrs.grs_updated = &apos;Y&apos; and lower(igrs.GRS_ROLE_TYPE)=&apos;composite&apos; &#xD;&#xA;and igrs.Immutable_Id=grs.Immutable_Id))&#xD;&#xA;order by IMMUTABLE_ID,ENTERPRISE_ROLE_DTLS&#xD;&#xA;"/>
+      <entry key="acctAggregationEnd">
+        <value>
+          <Date>1518694624161</Date>
+        </value>
+      </entry>
+      <entry key="acctAggregationStart">
+        <value>
+          <Date>1518694598033</Date>
+        </value>
+      </entry>
+      <entry key="afterProvisioningRule" value="IHG_CustomRule_Enterprise_AfterProvisioning"/>
+      <entry key="aggregationMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="app_HotelId"/>
+      <entry key="app_brandCode"/>
+      <entry key="app_brandDesc"/>
+      <entry key="app_chainCode"/>
+      <entry key="app_city"/>
+      <entry key="app_countryName"/>
+      <entry key="app_facilityID"/>
+      <entry key="app_holidexCode"/>
+      <entry key="app_holidexCodetb"/>
+      <entry key="app_isMigratedHotel">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="app_isocountrycode"/>
+      <entry key="app_managementTypeCode"/>
+      <entry key="app_postalCode"/>
+      <entry key="app_region"/>
+      <entry key="app_state"/>
+      <entry key="app_streetAddress"/>
+      <entry key="beforeProvisioningRule" value="IHG_CustomRule_Enterprise_BeforeProvisioning"/>
+      <entry key="compositeDefinition"/>
+      <entry key="deltaTable"/>
+      <entry key="disableOrderingCheck" value="true"/>
+      <entry key="driverClass" value="%%JDBC_ORACLE_DRIVER%%"/>
+      <entry key="getDeltaSQL"/>
+      <entry key="growthUpdated">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="grsBrandCode"/>
+      <entry key="grsRegionCode"/>
+      <entry key="indexColumns">
+        <value>
+          <List>
+            <String>IMMUTABLE_ID</String>
+          </List>
+        </value>
+      </entry>
+      <entry key="isPermissionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="is_Corporate">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="jdbcCreateProvisioningRule" value="IHG_ProvisioningRule_Enterprise_JDBCCreateProvision"/>
+      <entry key="jdbcDisableProvisioningRule" value="IHG_ProvisioningRule_Enterprise_JDBCDisableProvision"/>
+      <entry key="jdbcEnableProvisioningRule" value="IHG_ProvisioningRule_Enterprise_JDBCEnableProvision"/>
+      <entry key="jdbcModifyProvisioningRule" value="IHG_ProvisioningRule_Enterprise_JDBCModifyProvision"/>
+      <entry key="mergeColumns">
+        <value>
+          <List>
+            <String>ENTERPRISE_ROLE_DTLS</String>
+          </List>
+        </value>
+      </entry>
+      <entry key="mergeRows">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionAttributeScope" value="entitlements"/>
+      <entry key="nativeChangeDetectionAttributes"/>
+      <entry key="nativeChangeDetectionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionOperations"/>
+      <entry key="partitionMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="partitionStatements"/>
+      <entry key="password" value="%%IDM_JDBC_PASSWORD%%"/>
+      <entry key="provisionRule" value="operationRule"/>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="taggedApplication"/>
+      <entry key="templateApplication" value="JDBC Template"/>
+      <entry key="url" value="%%IDM_JDBC_URL%%"/>
+      <entry key="useExecuteQuery">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="user" value="%%IDM_JDBC_USERNAME%%"/>
+    </Map>
+  </Attributes>
+  <CustomizationRule>
+    <Reference class="sailpoint.object.Rule" name="IHG_CustomizationRule_Enterprise"/>
+  </CustomizationRule>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <ProvisioningForms>
+    <Form name="Enterprise Create Provisioning Form" objectType="account" type="Create">
+      <Description>Enterprise Create Provisioning Form</Description>
+      <Field displayName="LANGUAGE" filterString="" helpKey="Language from Plan" name="LANGUAGE" type="string" value="MYID_replaceChar2"/>
+      <Field displayName="DUMMY_ACL" filterString="" helpKey="for GRS entitlement and ACL" name="DUMMY_ACL" required="true" type="string" value="MYID_replaceChar1"/>
+      <Field displayName="DUMMY_ACLDESC" filterString="" name="DUMMY_ACLDESC" required="true" type="string" value="MYID_replaceChar3"/>
+    </Form>
+    <Form name="Enterprise Modify Provisioning Form" objectType="account" type="Update">
+      <Description>Enterprise Modify Provisioning Form</Description>
+      <Section>
+        <Field displayName="DUMMY_ACL" name="DUMMY_ACL" type="string">
+          <Script>
+            <Includes>
+              <Reference class="sailpoint.object.Rule"  name="IHG_Rule_Library_ManageAccessGenericFramework"/>
+            </Includes>
+            <Source>
+			//System.out.println("Project in GRS is "+project.toXml());
+			return method_getProvFormDummyFieldValues("MYID_replaceChar1",project,application);
+			</Source>
+          </Script>
+        </Field>
+        <Field displayName="DUMMY_ACLDESC" name="DUMMY_ACLDESC" type="string">
+          <Script>
+            <Includes>
+              <Reference class="sailpoint.object.Rule"  name="IHG_Rule_Library_ManageAccessGenericFramework"/>
+            </Includes>
+            <Source>
+			//System.out.println("Project in GRS is "+project.toXml());
+			return method_getProvFormDummyFieldValues("MYID_replaceChar3",project,application);
+			</Source>
+          </Script>
+        </Field>
+        <Field displayName="LANGUAGE" name="LANGUAGE" type="string">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule" name="getLanguageforEnterpriseforLink"/>
+          </RuleRef>
+        </Field>
+      </Section>
+    </Form>
+  </ProvisioningForms>
+  <Schemas>
+    <Schema displayAttribute="IMMUTABLE_ID" identityAttribute="IMMUTABLE_ID" nativeObjectType="account" objectType="account" permissionsRemediationModificationType="None">
+      <AttributeDefinition name="FIRSTNAME" type="string"/>
+      <AttributeDefinition name="LASTNAME" type="string"/>
+      <AttributeDefinition name="EMAILADDRESS" type="string"/>
+      <AttributeDefinition name="LANGUAGE" type="string"/>
+      <AttributeDefinition name="DISABLED" type="string"/>
+      <AttributeDefinition name="DELETED" type="string"/>
+      <AttributeDefinition name="IMMUTABLE_ID" type="string"/>
+      <AttributeDefinition name="GRS_ENTITLEMENT" type="string"/>
+      <AttributeDefinition entitlement="true" managed="true" multi="true" name="ENTERPRISE_ROLE_DTLS" type="string"/>
+      <AttributeDefinition name="DUMMY_ACL" type="string"/>
+      <AttributeDefinition name="DUMMY_ACLDESC" type="string"/>
+    </Schema>
+  </Schemas>
+  <ApplicationScorecard/>
+</Application>

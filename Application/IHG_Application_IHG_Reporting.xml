@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Application assignedScopePath="8a53f2a0628b195601628cbd0b2601ab:8a53f2a0628b195601628fda03170b67" connector="sailpoint.connector.JDBCConnector" featuresString="DISCOVER_SCHEMA, PROVISIONING, SYNC_PROVISIONING, DIRECT_PERMISSIONS" icon="databaseIcon"  name="IHG Reporting Application" type="JDBC">
+  <AccountCorrelationConfig>
+    <Reference class="sailpoint.object.CorrelationConfig"  name="IHG_CorrelationRule_REPORTING"/>
+  </AccountCorrelationConfig>
+  <AssignedScope>
+    <Reference class="sailpoint.object.Scope"  name="IHG Reporting Application"/>
+  </AssignedScope>
+  <Attributes>
+    <Map>
+      <entry key="SQL" value="select u.IMMUTABLE_USR_ID as ImmutableID,u.FRST_NM FirstName,&#xD;&#xA;U.Lst_Nm Lastname, U.Email_Id Email, U.Netwk_Id Networkid,&#xD;&#xA;u.DOMAIN_CD Domain, u.USR_TYP_CD User_Type_CD,u.PRIM_LOC_CD PrimaryWorkLocation&#xD;&#xA;, u.LOC_TYP_NM LocationType, u.DEPT_CD DepartmentCode, u.ISO_CTRY_CD CountryCode&#xD;&#xA;, u.TERMINATE_DT TerminationDate,urr.IHG_Reporting_Role IHG_Reporting_Role&#xD;&#xA;from EIG.IAM_USR u&#xD;&#xA;,&#xD;&#xA;(&#xD;&#xA;select ur.IMMUTABLE_USR_ID IMMUTABLE_USR_ID,r.ROLE_NM IHG_Reporting_Role&#xD;&#xA;from EIG.IAM_USR_ROLE_XREF ur,EIG.USR_ROLE r&#xD;&#xA;Where Ur.Role_Key=R.Role_Key&#xD;&#xA;And Ur.Disabled_Ind = &apos;N&apos;&#xD;&#xA;) urr&#xD;&#xA;where u.IMMUTABLE_USR_ID=urr.IMMUTABLE_USR_ID(+) order by u.IMMUTABLE_USR_ID desc"/>
+      <entry key="acctAggregationEnd">
+        <value>
+          <Date>1525772984497</Date>
+        </value>
+      </entry>
+      <entry key="acctAggregationStart">
+        <value>
+          <Date>1525772984333</Date>
+        </value>
+      </entry>
+      <entry key="afterProvisioningRule" value="IHG_ProvisioningRule_IHGReporting_PostProvision"/>
+      <entry key="aggregationMode">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="app_HotelId"/>
+      <entry key="app_brandCode"/>
+      <entry key="app_brandDesc"/>
+      <entry key="app_chainCode"/>
+      <entry key="app_city"/>
+      <entry key="app_countryName"/>
+      <entry key="app_facilityID"/>
+      <entry key="app_holidexCode"/>
+      <entry key="app_hotelStatus"/>
+      <entry key="app_isMigratedHotel">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="app_isocountrycode"/>
+      <entry key="app_managementTypeCode"/>
+      <entry key="app_postalCode"/>
+      <entry key="app_region"/>
+      <entry key="app_regionText"/>
+      <entry key="app_state"/>
+      <entry key="app_streetAddress"/>
+      <entry key="beforeProvisioningRule"/>
+      <entry key="compositeDefinition"/>
+      <entry key="deltaTable"/>
+      <entry key="disableOrderingCheck" value="true"/>
+      <entry key="driverClass" value="%%JDBC_ORACLE_DRIVER%%"/>
+      <entry key="getDeltaSQL"/>
+      <entry key="growthUpdated">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="grsBrandCode"/>
+      <entry key="grsRegionCode"/>
+      <entry key="indexColumns">
+        <value>
+          <List>
+            <String>IMMUTABLEID</String>
+          </List>
+        </value>
+      </entry>
+      <entry key="isPermissionEnabled">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="is_Corporate">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="jdbcCreateProvisioningRule" value="IHG_ProvisioningRule_IHGReporting_Insert"/>
+      <entry key="jdbcDeleteProvisioningRule" value="IHG_ProvisioningRule_IHGReporting_Delete"/>
+      <entry key="jdbcDisableProvisioningRule" value="IHG_ProvisioningRule_IHGReporting_Disable"/>
+      <entry key="jdbcEnableProvisioningRule" value="IHG_ProvisioningRule_IHGReporting_Enable"/>
+      <entry key="jdbcModifyProvisioningRule" value="IHG_ProvisioningRule_IHGReporting_Modify"/>
+      <entry key="mergeColumns">
+        <value>
+          <List>
+            <String>IHG_REPORTING_ROLE</String>
+          </List>
+        </value>
+      </entry>
+      <entry key="mergeRows">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionAttributeScope" value="entitlements"/>
+      <entry key="nativeChangeDetectionAttributes"/>
+      <entry key="nativeChangeDetectionEnabled">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionOperations"/>
+      <entry key="partitionMode">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="partitionStatements">
+        <value>
+          <List>
+            <String>select u.IMMUTABLE_USR_ID as ImmutableID,u.FRST_NM FirstName,U.Lst_Nm Lastname,U.Email_Id Email,U.Netwk_Id Networkid,u.DOMAIN_CD Domain,u.USR_TYP_CD User_Type_CD,u.PRIM_LOC_CD PrimaryWorkLocation,u.LOC_TYP_NM LocationType,u.DEPT_CD DepartmentCode,u.ISO_CTRY_CD CountryCode,u.TERMINATE_DT TerminationDate,urr.IHG_Reporting_Role IHG_Reporting_Role from EIG.IAM_USR u,(select ur.IMMUTABLE_USR_ID IMMUTABLE_USR_ID,r.ROLE_NM IHG_Reporting_Role from EIG.IAM_USR_ROLE_XREF ur,EIG.USR_ROLE r Where Ur.Role_Key=R.Role_Key And Ur.Disabled_Ind = 'N') urr where u.IMMUTABLE_USR_ID=urr.IMMUTABLE_USR_ID(+) And (U.Netwk_Id like 'A%' Or U.Netwk_Id like 'a%' Or U.Netwk_Id like 'B%' Or U.Netwk_Id like 'b%' Or U.Netwk_Id like 'C%' Or U.Netwk_Id like 'c%' Or U.Netwk_Id like 'D%' Or U.Netwk_Id like 'd%' Or U.Netwk_Id like 'E%' Or U.Netwk_Id like 'e%' Or U.Netwk_Id like 'F%' Or U.Netwk_Id like 'f%' Or U.Netwk_Id like 'G%' Or U.Netwk_Id like 'g%') order by u.IMMUTABLE_USR_ID desc</String>
+            <String>select u.IMMUTABLE_USR_ID as ImmutableID,u.FRST_NM FirstName,U.Lst_Nm Lastname,U.Email_Id Email,U.Netwk_Id Networkid,u.DOMAIN_CD Domain,u.USR_TYP_CD User_Type_CD,u.PRIM_LOC_CD PrimaryWorkLocation,u.LOC_TYP_NM LocationType,u.DEPT_CD DepartmentCode,u.ISO_CTRY_CD CountryCode,u.TERMINATE_DT TerminationDate,urr.IHG_Reporting_Role IHG_Reporting_Role from EIG.IAM_USR u,(select ur.IMMUTABLE_USR_ID IMMUTABLE_USR_ID,r.ROLE_NM IHG_Reporting_Role from EIG.IAM_USR_ROLE_XREF ur,EIG.USR_ROLE r Where Ur.Role_Key=R.Role_Key And Ur.Disabled_Ind = 'N') urr where u.IMMUTABLE_USR_ID=urr.IMMUTABLE_USR_ID(+) And (U.Netwk_Id like 'H%' Or U.Netwk_Id like 'h%' Or U.Netwk_Id like 'I%' Or U.Netwk_Id like 'i%' Or U.Netwk_Id like 'J%' Or U.Netwk_Id like 'j%' Or U.Netwk_Id like 'K%' Or U.Netwk_Id like 'k%' Or U.Netwk_Id like 'L%' Or U.Netwk_Id like 'l%' Or U.Netwk_Id like 'M%' Or U.Netwk_Id like 'm%' Or U.Netwk_Id like 'N%' Or U.Netwk_Id like 'n%' Or U.Netwk_Id like 'P%' Or U.Netwk_Id like 'p%') order by u.IMMUTABLE_USR_ID desc</String>
+            <String>select u.IMMUTABLE_USR_ID as ImmutableID,u.FRST_NM FirstName,U.Lst_Nm Lastname,U.Email_Id Email,U.Netwk_Id Networkid,u.DOMAIN_CD Domain,u.USR_TYP_CD User_Type_CD,u.PRIM_LOC_CD PrimaryWorkLocation,u.LOC_TYP_NM LocationType,u.DEPT_CD DepartmentCode,u.ISO_CTRY_CD CountryCode,u.TERMINATE_DT TerminationDate,urr.IHG_Reporting_Role IHG_Reporting_Role from EIG.IAM_USR u,(select ur.IMMUTABLE_USR_ID IMMUTABLE_USR_ID,r.ROLE_NM IHG_Reporting_Role from EIG.IAM_USR_ROLE_XREF ur,EIG.USR_ROLE r Where Ur.Role_Key=R.Role_Key And Ur.Disabled_Ind = 'N') urr where u.IMMUTABLE_USR_ID=urr.IMMUTABLE_USR_ID(+) And (U.Netwk_Id like 'O%' Or U.Netwk_Id like 'o%' Or U.Netwk_Id like 'Q%' Or U.Netwk_Id like 'q%' Or U.Netwk_Id like 'R%' Or U.Netwk_Id like 'r%' Or U.Netwk_Id like 'S%' Or U.Netwk_Id like 's%' Or U.Netwk_Id like 'T%' Or U.Netwk_Id like 't%' Or U.Netwk_Id like 'U%' Or U.Netwk_Id like 'u%' Or U.Netwk_Id like 'V%' Or U.Netwk_Id like 'v%' Or U.Netwk_Id like 'W%' Or U.Netwk_Id like 'w%' Or U.Netwk_Id like 'X%' Or U.Netwk_Id like 'x%' Or U.Netwk_Id like 'Y%' Or U.Netwk_Id like 'y%' Or U.Netwk_Id like 'Z%' Or U.Netwk_Id like 'z%') order by u.IMMUTABLE_USR_ID desc</String>
+          </List>
+        </value>
+      </entry>
+      <entry key="password" value="%%IHGR_PASSWORD%%"/>
+      <entry key="provisionRule" value="operationRule"/>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="taggedApplication"/>
+      <entry key="templateApplication" value="JDBC Template"/>
+      <entry key="testConnSQL"/>
+      <entry key="url" value="%%IHGR_URL%%"/>
+      <entry key="useExecuteQuery">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureDelta">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureDirectPermission">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureGetObject">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="useStoredProcedurePartition">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureSqlStmt">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureTestConn">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="user" value="%%IHGR_USERNAME%%"/>
+    </Map>
+  </Attributes>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" id="8a53f29f531e3c9b01531e3d933900ee" name="spadmin"/>
+  </Owner>
+  <ProvisioningForms>
+    <Form name="IHGR Create Form" objectType="account" type="Create">
+      <Attributes>
+        <Map>
+          <entry key="pageTitle" value="IHGR Create Form"/>
+        </Map>
+      </Attributes>
+      <Description>IHGR Create Form</Description>
+      <Section name="Section 1">
+        <Field displayName="FIRSTNAME" name="FIRSTNAME" type="string">
+          <Script>
+            <Source>identity.getAttribute("firstname");</Source>
+          </Script>
+        </Field>
+        <Field displayName="LASTNAME" name="LASTNAME" type="string">
+          <Script>
+            <Source>identity.getAttribute("lastname");
+		</Source>
+          </Script>
+        </Field>
+        <Field displayName="EMAIL" name="EMAIL" type="string">
+          <Script>
+            <Source>identity.getAttribute("email");</Source>
+          </Script>
+        </Field>
+        <Field displayName="NETWORKID" name="NETWORKID" type="string">
+          <Script>
+            <Source>identity.getAttribute("networkid");</Source>
+          </Script>
+        </Field>
+        <Field displayName="DOMAIN" name="DOMAIN" type="string">
+          <Script>
+            <Source>identity.getAttribute("domain");</Source>
+          </Script>
+        </Field>
+        <Field displayName="USER_TYPE_CD" name="USER_TYPE_CD" type="string">
+          <Script>
+            <Source>identity.getAttribute("usertypecd");</Source>
+          </Script>
+        </Field>
+        <Field displayName="PRIMARYWORKLOCATION" name="PRIMARYWORKLOCATION" type="string">
+          <Script>
+            <Source>identity.getAttribute("primaryworklocation");</Source>
+          </Script>
+        </Field>
+        <Field displayName="LOCATIONTYPE" name="LOCATIONTYPE" type="string">
+          <Script>
+            <Source>identity.getAttribute("locationtype");</Source>
+          </Script>
+        </Field>
+        <Field displayName="DEPARTMENTCODE" name="DEPARTMENTCODE" type="string">
+          <Script>
+            <Source>identity.getAttribute("departmentcode");</Source>
+          </Script>
+        </Field>
+        <Field displayName="COUNTRYCODE" name="COUNTRYCODE" type="string">
+          <Script>
+            <Source>identity.getAttribute("primaryworkisocountrycode");</Source>
+          </Script>
+        </Field>
+        <Field displayName="IMMUTABLEID" name="IMMUTABLEID" type="string">
+          <Script>
+            <Source>identity.getAttribute("immutableid");</Source>
+          </Script>
+        </Field>
+      </Section>
+    </Form>
+    <Form name="IHGR Update Form" objectType="account" type="Update">
+      <Attributes>
+        <Map>
+          <entry key="pageTitle" value="IHGR Update Form"/>
+        </Map>
+      </Attributes>
+      <Description>IHGR Update Form</Description>
+    </Form>
+  </ProvisioningForms>
+  <Schemas>
+    <Schema created="1523602193740" displayAttribute="IMMUTABLEID" id="8a53f2a062a6a0170162bdc47d4c30aa" identityAttribute="IMMUTABLEID" modified="1525774411811" nativeObjectType="account" objectType="account" permissionsRemediationModificationType="None">
+      <AttributeDefinition name="IMMUTABLEID" type="string"/>
+      <AttributeDefinition name="FIRSTNAME" type="string"/>
+      <AttributeDefinition name="LASTNAME" type="string"/>
+      <AttributeDefinition name="EMAIL" type="string"/>
+      <AttributeDefinition name="NETWORKID" type="string"/>
+      <AttributeDefinition name="DOMAIN" type="string"/>
+      <AttributeDefinition name="USER_TYPE_CD" type="string"/>
+      <AttributeDefinition name="PRIMARYWORKLOCATION" type="string"/>
+      <AttributeDefinition name="LOCATIONTYPE" type="string"/>
+      <AttributeDefinition name="DEPARTMENTCODE" type="string"/>
+      <AttributeDefinition name="COUNTRYCODE" type="string"/>
+      <AttributeDefinition name="TERMINATIONDATE" type="string"/>
+      <AttributeDefinition entitlement="true" managed="true" multi="true" name="IHG_REPORTING_ROLE" type="string"/>
+    </Schema>
+  </Schemas>
+  <ApplicationScorecard created="1522307214331" id="8a53f2a062703b4601627094abfb00d4" modified="1525774411811"/>
+</Application>

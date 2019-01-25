@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Application connector="sailpoint.connector.JDBCConnector" featuresString="DISCOVER_SCHEMA, PROVISIONING, SYNC_PROVISIONING, DIRECT_PERMISSIONS" icon="databaseIcon" name="Revenue Management System" type="JDBC">
+  <AccountCorrelationConfig>
+    <Reference class="sailpoint.object.CorrelationConfig" name="IHG_CorrelationRule_RMS"/>
+  </AccountCorrelationConfig>
+  <AssignedScope>
+    <Reference class="sailpoint.object.Scope"  name="Revenue Management System"/>
+  </AssignedScope>
+  <Attributes>
+    <Map>
+      <entry key="SQL" value="select u.FRST_NM FIRSTNAME,u.LST_NM LASTNAME,u.EMAIL_ID EMAILID,'N' IS_CORPORATE&#xd;&#xa;,u.DOMAIN_NM DOMAIN,u.PHONE_NBR WORKPHONENUMBER,u.MOBILE_NBR MOBILENUMBER&#xd;&#xa;,u.EFF_STRT_DT EFFECTIVE_STARTDATE,u.EFF_END_DT EFFECTIVE_ENDDATE,u.IMMUTABLE_USR_ID IMMUTABLEID,u.NETWK_USR_ID NETWORKID&#xd;&#xa;,'RMS Role: ' || r.ROLE_NM ||' at ACL: ' ||  acl.SRC_ACL_TXT ||' as Role Assigner: ' || acl.ROLE_ASSIGNER_PERMISSION_IND RMS_ENTITLEMENT_DTLS,acl.DISABLE_IND&#xd;&#xa;from rms.usr_role_htl acl,rms.role r,rms.usr u&#xd;&#xa;where acl.IMMUTABLE_USR_ID = u.IMMUTABLE_USR_ID&#xd;&#xa;and acl.role_id = r.role_id order by u.IMMUTABLE_USR_ID"/>
+      <entry key="acctAggregationEnd">
+        <value>
+          <Date>1518626692246</Date>
+        </value>
+      </entry>
+      <entry key="acctAggregationStart">
+        <value>
+          <Date>1518626480263</Date>
+        </value>
+      </entry>
+      <entry key="afterProvisioningRule" value="IHG_CustomRule_RMS_AfterProvisioning"/>
+      <entry key="aggregationMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="app_HotelId"/>
+      <entry key="app_brandCode"/>
+      <entry key="app_brandDesc"/>
+      <entry key="app_chainCode"/>
+      <entry key="app_city"/>
+      <entry key="app_countryName"/>
+      <entry key="app_facilityID"/>
+      <entry key="app_holidexCode"/>
+      <entry key="app_isMigratedHotel">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="app_isocountrycode"/>
+      <entry key="app_managementTypeCode"/>
+      <entry key="app_postalCode"/>
+      <entry key="app_region"/>
+      <entry key="app_state"/>
+      <entry key="app_streetAddress"/>
+      <entry key="compositeDefinition"/>
+      <entry key="deltaTable"/>
+      <entry key="disableOrderingCheck" value="true"/>
+      <entry key="driverClass" value="%%SQL_DRIVER%%"/>
+      <entry key="getDeltaSQL"/>
+      <entry key="growthUpdated">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="grsBrandCode"/>
+      <entry key="grsRegionCode"/>
+      <entry key="indexColumns">
+        <value>
+          <List>
+            <String>IMMUTABLEID</String>
+          </List>
+        </value>
+      </entry>
+      <entry key="isPermissionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="is_Corporate">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="jdbcCreateProvisioningRule" value="IHG_ProvisioningRule_RMS_JDBCCreateProvision"/>
+      <entry key="jdbcDeleteProvisioningRule" value="IHG_ProvisioningRule_RMS_JDBCDeleteProvision"/>
+      <entry key="jdbcDisableProvisioningRule" value="IHG_ProvisioningRule_RMS_JDBCDisableProvision"/>
+      <entry key="jdbcEnableProvisioningRule" value="IHG_ProvisioningRule_RMS_JDBCEnableProvision"/>
+      <entry key="jdbcModifyProvisioningRule" value="IHG_ProvisioningRule_RMS_JDBCModifyProvision"/>
+      <entry key="mergeColumns">
+        <value>
+          <List>
+            <String>RMS_ENTITLEMENT_DTLS</String>
+          </List>
+        </value>
+      </entry>
+      <entry key="mergeRows">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionAttributeScope" value="entitlements"/>
+      <entry key="nativeChangeDetectionAttributes"/>
+      <entry key="nativeChangeDetectionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionOperations"/>
+      <entry key="partitionMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="partitionStatements"/>
+      <entry key="password" value="%%RMS_PASSWORD%%"/>
+      <entry key="provisionRule" value="operationRule"/>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="taggedApplication"/>
+      <entry key="templateApplication" value="JDBC Template"/>
+      <entry key="url" value="%%RMS_URL%%"/>
+      <entry key="useExecuteQuery">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="user" value="%%RMS_USERNAME%%"/>
+    </Map>
+  </Attributes>
+  <CustomizationRule>
+    <Reference class="sailpoint.object.Rule" name="IHG_CustomizationRule_RMS"/>
+  </CustomizationRule>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <ProvisioningForms>
+    <Form name="Create Policy" objectType="account" type="Create">
+      <Field displayName="FIRSTNAME" filterString="" name="FIRSTNAME" type="string">
+        <Script>
+          <Source>identity.getAttribute("firstname");</Source>
+        </Script>
+      </Field>
+      <Field displayName="LASTNAME" filterString="" name="LASTNAME" type="string">
+        <Script>
+          <Source>identity.getAttribute("lastname");</Source>
+        </Script>
+      </Field>
+      <Field displayName="DUMMY_ACL" filterString="" helpKey="selected access" name="DUMMY_ACL" type="string" value="MYID_replaceChar1"/>
+    </Form>
+    <Form name="ModifyPolicy" objectType="account" type="Update">
+      <Description>ModifyPolicy</Description>
+      <Section>
+        <Field displayName="DUMMY_ACL" name="DUMMY_ACL" type="string">
+          <Script>
+            <Includes>
+              <Reference class="sailpoint.object.Rule" name="IHG_Rule_Library_ManageAccessGenericFramework"/>
+            </Includes>
+            <Source>
+			return method_getProvFormDummyFieldValues("MYID_replaceChar1",project,application);
+			</Source>
+          </Script>
+        </Field>
+      </Section>
+    </Form>
+  </ProvisioningForms>
+  <Schemas>
+    <Schema identityAttribute="IMMUTABLEID" nativeObjectType="account" objectType="account" permissionsRemediationModificationType="None">
+      <AttributeDefinition name="FIRSTNAME" type="string"/>
+      <AttributeDefinition name="LASTNAME" type="string"/>
+      <AttributeDefinition name="EMAILID" type="string"/>
+      <AttributeDefinition name="IS_CORPORATE" type="string"/>
+      <AttributeDefinition name="DOMAIN" type="string"/>
+      <AttributeDefinition name="WORKPHONENUMBER" type="string"/>
+      <AttributeDefinition name="MOBILENUMBER" type="string"/>
+      <AttributeDefinition name="EFFECTIVE_STARTDATE" type="string"/>
+      <AttributeDefinition name="EFFECTIVE_ENDDATE" type="string"/>
+      <AttributeDefinition name="IMMUTABLEID" type="string"/>
+      <AttributeDefinition name="NETWORKID" type="string"/>
+	  <AttributeDefinition name="DISABLE_IND" type="string"/>
+      <AttributeDefinition entitlement="true" managed="true" multi="true" name="RMS_ENTITLEMENT_DTLS" type="string"/>
+    </Schema>
+  </Schemas>
+  <ApplicationScorecard/>
+</Application>

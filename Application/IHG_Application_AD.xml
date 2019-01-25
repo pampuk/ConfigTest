@@ -1,0 +1,566 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Application caseInsensitive="true" connector="sailpoint.connector.ADLDAPConnector" featuresString="PROVISIONING, SYNC_PROVISIONING, AUTHENTICATE, MANAGER_LOOKUP, SEARCH, UNSTRUCTURED_TARGETS, UNLOCK, ENABLE, PASSWORD, CURRENT_PASSWORD, ACCOUNT_ONLY_REQUEST, ADDITIONAL_ACCOUNT_REQUEST" icon="directory1Icon" name="IHG Corporate Directory" type="Active Directory - Direct">
+  <AccountCorrelationConfig>
+    <Reference class="sailpoint.object.CorrelationConfig"  name="IHG_CorrelationRule_AD"/>
+  </AccountCorrelationConfig>
+  <AssignedScope>
+    <Reference class="sailpoint.object.Scope"  name="AD Scope"/>
+  </AssignedScope>
+  <Attributes>
+    <Map>
+      <entry key="IQServiceHost" value="%%AD_IQSVC_HOST%%"/>
+      <entry key="IQServicePort" value="%%AD_IQSVC_PORT%%"/>
+      <entry key="app_HotelId"/>
+      <entry key="app_brandCode"/>
+      <entry key="app_brandDesc"/>
+      <entry key="app_city"/>
+      <entry key="app_countryName"/>
+      <entry key="app_facilityID"/>
+      <entry key="app_holidexCode"/>
+      <entry key="app_isMigratedHotel">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="app_isocountrycode"/>
+      <entry key="app_managementTypeCode"/>
+      <entry key="app_postalCode"/>
+      <entry key="app_region"/>
+      <entry key="app_state"/>
+      <entry key="app_streetAddress"/>
+      <entry key="authSearchAttributes">
+        <value>
+          <List>
+            <String>distinguishedName</String>
+            <String>sAMAccountName</String>
+            <String>uid</String>
+            <String>mail</String>
+          </List>
+        </value>
+      </entry>
+      <entry key="cacheRemoteObjectPort" value="40002"/>
+      <entry key="cacheRmiPort" value="40001"/>
+      <entry key="compositeDefinition"/>
+      <entry key="deletedObjectsContainer" value="CN=Deleted Objects,DOMAIN"/>
+      <entry key="deltaIterationMode" value="DEFAULT"/>
+      <entry key="disableComputePreloading">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="disableFspAggregation">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="domainSettings">
+        <value>
+          <List>
+            <Map>
+              <entry key="authorizationType" value="simple"/>
+              <entry key="domainDN" value="%%AD_AMER_DOMAIN%%"/>
+              <entry key="password" value="%%AD_PROXY_PASSWORD%%"/>
+	      <entry key="domainIterateSearchFilter"/>
+              <entry key="domainNetBiosName"/>
+              <entry key="forestName" value="defaultForest"/>
+              <entry key="port" value="%%AD_PORT%%"/>
+              <entry key="servers">
+                <value>
+                  <List>
+                    <String>%%AD_AMER_HOST%%</String>
+					<String>%%AD_AMER_HOST2%%</String>
+                  </List>
+                </value>
+              </entry>
+              <entry key="useSSL">
+                <value>
+                  <Boolean/>
+                </value>
+              </entry>
+              <entry key="user" value="%%AD_PROXY_USER%%"/>
+            </Map>
+            <Map>
+              <entry key="authorizationType" value="simple"/>
+              <entry key="domainDN" value="%%AD_GLOBAL_DOMAIN%%"/>
+              <entry key="password" value="%%AD_PROXY_PASSWORD%%"/>
+              <entry key="domainNetBiosName"/>
+              <entry key="forestName" value="defaultForest"/>
+              <entry key="port" value="%%AD_PORT%%"/>
+              <entry key="servers">
+                <value>
+                  <List>
+                    <String>%%AD_GLOBAL_HOST%%</String>
+					<String>%%AD_GLOBAL_HOST2%%</String>
+                  </List>
+                </value>
+              </entry>
+              <entry key="useSSL">
+                <value>
+                  <Boolean/>
+                </value>
+              </entry>
+              <entry key="user" value="%%AD_PROXY_USER%%"/>
+            </Map>
+            <Map>
+              <entry key="authorizationType" value="simple"/>
+              <entry key="domainDN" value="%%AD_EMEA_DOMAIN%%"/>
+              <entry key="password" value="%%AD_PROXY_PASSWORD%%"/>
+              <entry key="forestName" value="defaultForest"/>
+              <entry key="port" value="%%AD_PORT%%"/>
+              <entry key="servers">
+                <value>
+                  <List>
+                    <String>%%AD_EMEA_HOST%%</String>
+					<String>%%AD_EMEA_HOST2%%</String>
+                  </List>
+                </value>
+              </entry>
+              <entry key="useSSL">
+                <value>
+                  <Boolean/>
+                </value>
+              </entry>
+              <entry key="user" value="%%AD_PROXY_USER%%"/>
+            </Map>
+            <Map>
+              <entry key="authorizationType" value="simple"/>
+              <entry key="domainDN" value="%%AD_APAC_DOMAIN%%"/>
+              <entry key="password" value="%%AD_PROXY_PASSWORD%%"/>
+              <entry key="forestName" value="defaultForest"/>
+              <entry key="port" value="%%AD_PORT%%"/>
+              <entry key="servers">
+                <value>
+                  <List>
+                    <String>%%AD_APAC_HOST%%</String>
+					<String>%%AD_APAC_HOST2%%</String>
+                  </List>
+                </value>
+              </entry>
+              <entry key="useSSL">
+                <value>
+                  <Boolean/>
+                </value>
+              </entry>
+              <entry key="user" value="%%AD_PROXY_USER%%"/>
+            </Map>
+            <Map>
+              <entry key="authorizationType" value="simple"/>
+              <entry key="domainDN" value="%%AD_DOMAIN%%"/>
+              <entry key="password" value="%%AD_PROXY_PASSWORD%%"/>
+              <entry key="forestName" value="defaultForest"/>
+              <entry key="port" value="%%AD_PORT%%"/>
+              <entry key="servers">
+                <value>
+                  <List>
+                    <String>%%AD_HOST%%</String>
+					<String>%%AD_HOST2%%</String>
+                  </List>
+                </value>
+              </entry>
+              <entry key="useSSL">
+                <value>
+                  <Boolean/>
+                </value>
+              </entry>
+              <entry key="user" value="%%AD_PROXY_USER%%"/>
+            </Map>
+          </List>
+        </value>
+      </entry>
+      <entry key="enableCache">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="exchangeversion" value="DEFAULT"/>
+      <entry key="forestSettings">
+        <value>
+          <List>
+            <Map>
+              <entry key="authorizationType" value="simple"/>
+              <entry key="forestName" value="defaultForest"/>
+              <entry key="gcServer"/>
+              <entry key="manageAllDomains">
+                <value>
+                  <Boolean></Boolean>
+                </value>
+              </entry>
+              <entry key="password"/>
+              <entry key="useGroupMembershipPreloading"/>
+              <entry key="useSSL">
+                <value>
+                  <Boolean></Boolean>
+                </value>
+              </entry>
+              <entry key="user"/>
+            </Map>
+          </List>
+        </value>
+      </entry>
+      <entry key="group.searchDNs">
+        <value>
+          <List>
+            <Map>
+              <entry key="iterateSearchFilter" value="(&amp;(cn=Tableau_*)(objectClass=Group))"/>
+              <entry key="searchDN" value="OU=Tableau,OU=MyID-GlobalApps,OU=Service Delivery,%%AD_DOMAIN%%"/>
+              <entry key="searchScope" value="SUBTREE"/>
+            </Map>
+            <Map>
+              <entry key="iterateSearchFilter" value="(&amp;(cn=Bomgar_*)(objectClass=Group))"/>
+              <entry key="searchDN" value="OU=MyID-GlobalApps,OU=Service Delivery,%%AD_DOMAIN%%"/>
+              <entry key="searchScope" value="SUBTREE"/>
+            </Map>
+            <Map>
+              <entry key="iterateSearchFilter" value="(&amp;(objectclass=group)(cn=CP_VPN*))"/>
+              <entry key="searchDN" value="OU=Checkpoint,OU=MyID-GlobalApps,OU=Service Delivery,%%AD_DOMAIN%%"/>
+              <entry key="searchScope" value="SUBTREE"/>
+            </Map>
+            <Map>
+              <entry key="iterateSearchFilter" value="(&amp;(objectclass=group)(cn=ELK*))"/>
+              <entry key="searchDN" value="OU=ELK,OU=Delegation Groups,OU=Directory Access Security Control,%%AD_AMER_DOMAIN%%"/>
+              <entry key="searchScope" value="SUBTREE"/>
+            </Map>
+          </List>
+        </value>
+      </entry>
+      <entry key="growthUpdated">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="grsBrandCode"/>
+      <entry key="grsRegionCode"/>
+      <entry key="is_Corporate">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="lyncAttributes" value="RegistrarPool,SipAddressType,SipAddress,SipDomain,msRTCSIP-UserEnabled"/>
+      <entry key="manageLync">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="manageRecycleBin">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="managerCorrelationFilter">
+        <value>
+          <Filter operation="EQ"/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionAttributeScope" value="entitlements"/>
+      <entry key="nativeChangeDetectionAttributes"/>
+      <entry key="nativeChangeDetectionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionOperations"/>
+      <entry key="pageSize" value="100"/>
+      <entry key="searchDNs">
+        <value>
+          <List>
+            <Map>
+              <entry key="groupMembershipSearchDN" value="CN=Domain Users,CN=Users,%%AD_AMER_DOMAIN%%"/>
+              <entry key="iterateSearchFilter" value="(&amp;(employeeID=*)(objectclass=user)(!(samaccountname=*_*))(!(samaccountname=*-*))(!(name=*+*))(!(name=*_*))(!(displayname=ca_*))(!(displayname=*+*))(!(displayname=sa_*))(!(displayname=mbx_*))(|(userAccountControl=544)(userAccountControl=546)(userAccountControl=514)(userAccountControl=512)))"/>
+              <entry key="primaryGroupSearchDN" value="CN=Domain Users,CN=Users,%%AD_AMER_DOMAIN%%"/>
+              <entry key="searchDN" value="OU=Service Delivery,%%AD_AMER_DOMAIN%%"/>
+              <entry key="searchScope" value="SUBTREE"/>
+            </Map>
+            <Map>
+              <entry key="groupMembershipSearchDN" value="CN=Domain Users,CN=Users,%%AD_GLOBAL_DOMAIN%%"/>
+              <entry key="iterateSearchFilter" value="(&amp;(employeeID=*)(objectclass=user)(!(samaccountname=*_*))(!(samaccountname=*-*))(!(name=*+*))(!(name=*_*))(!(displayname=ca_*))(!(displayname=*+*))(!(displayname=sa_*))(!(displayname=mbx_*))(|(userAccountControl=544)(userAccountControl=546)(userAccountControl=514)(userAccountControl=512)))"/>
+              <entry key="primaryGroupSearchDN" value="CN=Domain Users,CN=Users,%%AD_GLOBAL_DOMAIN%%"/>
+              <entry key="searchDN" value="OU=Service Delivery,%%AD_GLOBAL_DOMAIN%%"/>
+              <entry key="searchScope" value="SUBTREE"/>
+            </Map>
+            <Map>
+              <entry key="groupMembershipSearchDN" value="CN=Domain Users,CN=Users,%%AD_GLOBAL_DOMAIN%%"/>
+              <entry key="iterateSearchFilter" value="(&amp;(employeeID=*)(objectclass=user)(!(samaccountname=*_*))(!(samaccountname=*-*))(!(name=*+*))(!(name=*_*))(!(displayname=ca_*))(!(displayname=*+*))(!(displayname=sa_*))(!(displayname=mbx_*))(|(userAccountControl=544)(userAccountControl=546)(userAccountControl=514)(userAccountControl=512)(userAccountControl=66048)))"/>
+              <entry key="primaryGroupSearchDN" value="CN=Domain Users,CN=Users,%%AD_GLOBAL_DOMAIN%%"/>
+              <entry key="searchDN" value="OU=Travel Agents,%%AD_GLOBAL_DOMAIN%%"/>
+              <entry key="searchScope" value="SUBTREE"/>
+            </Map>
+            <Map>
+              <entry key="groupMembershipSearchDN" value="CN=Domain Users,CN=Users,%%AD_EMEA_DOMAIN%%"/>
+              <entry key="iterateSearchFilter" value="(&amp;(employeeID=*)(objectclass=user)(!(samaccountname=*_*))(!(samaccountname=*-*))(!(name=*+*))(!(name=*_*))(!(displayname=ca_*))(!(displayname=*+*))(!(displayname=sa_*))(!(displayname=mbx_*))(|(userAccountControl=544)(userAccountControl=546)(userAccountControl=514)(userAccountControl=512)))"/>
+              <entry key="primaryGroupSearchDN" value="CN=Domain Users,CN=Users,%%AD_EMEA_DOMAIN%%"/>
+              <entry key="searchDN" value="OU=Service Delivery,%%AD_EMEA_DOMAIN%%"/>
+              <entry key="searchScope" value="SUBTREE"/>
+            </Map>
+            <Map>
+              <entry key="groupMembershipSearchDN" value="CN=Domain Users,CN=Users,%%AD_APAC_DOMAIN%%"/>
+              <entry key="iterateSearchFilter" value="(&amp;(employeeID=*)(objectclass=user)(!(samaccountname=*_*))(!(samaccountname=*-*))(!(name=*+*))(!(name=*_*))(!(displayname=ca_*))(!(displayname=*+*))(!(displayname=sa_*))(!(displayname=mbx_*))(|(userAccountControl=544)(userAccountControl=546)(userAccountControl=514)(userAccountControl=512)))"/>
+              <entry key="primaryGroupSearchDN" value="CN=Domain Users,CN=Users,%%AD_APAC_DOMAIN%%"/>
+              <entry key="searchDN" value="OU=Services Delivery,%%AD_APAC_DOMAIN%%"/>
+              <entry key="searchScope" value="SUBTREE"/>
+            </Map>
+            <Map>
+              <entry key="groupMembershipSearchDN" value="CN=Domain Users,CN=Users,%%AD_AMER_DOMAIN%%"/>
+              <entry key="iterateSearchFilter" value="(&amp;(employeeID=*)(objectclass=user)(!(samaccountname=*_*))(!(samaccountname=*-*))(!(name=*+*))(!(name=*_*))(!(displayname=ca_*))(!(displayname=*+*))(!(displayname=sa_*))(!(displayname=mbx_*))(|(userAccountControl=544)(userAccountControl=546)(userAccountControl=514)(userAccountControl=512)))"/>
+              <entry key="primaryGroupSearchDN" value="CN=Domain Users,CN=Users,%%AD_AMER_DOMAIN%%"/>
+              <entry key="searchDN" value="OU=Migrated Objects,%%AD_AMER_DOMAIN%%"/>
+              <entry key="searchScope" value="SUBTREE"/>
+            </Map>
+            <Map>
+              <entry key="groupMembershipSearchDN" value="CN=Domain Users,CN=Users,%%AD_GLOBAL_DOMAIN%%"/>
+              <entry key="iterateSearchFilter" value="(&amp;(employeeID=*)(objectclass=user)(!(samaccountname=*_*))(!(samaccountname=*-*))(!(name=*+*))(!(name=*_*))(!(displayname=ca_*))(!(displayname=*+*))(!(displayname=sa_*))(!(displayname=mbx_*))(|(userAccountControl=544)(userAccountControl=546)(userAccountControl=514)(userAccountControl=512)))"/>
+              <entry key="primaryGroupSearchDN" value="CN=Domain Users,CN=Users,%%AD_GLOBAL_DOMAIN%%"/>
+              <entry key="searchDN" value="OU=Migrated Objects,%%AD_GLOBAL_DOMAIN%%"/>
+              <entry key="searchScope" value="SUBTREE"/>
+            </Map>
+            <Map>
+              <entry key="groupMembershipSearchDN" value="CN=Domain Users,CN=Users,%%AD_APAC_DOMAIN%%"/>
+              <entry key="iterateSearchFilter" value="(&amp;(employeeID=*)(objectclass=user)(!(samaccountname=*_*))(!(samaccountname=*-*))(!(name=*+*))(!(name=*_*))(!(displayname=ca_*))(!(displayname=*+*))(!(displayname=sa_*))(!(displayname=mbx_*))(|(userAccountControl=544)(userAccountControl=546)(userAccountControl=514)(userAccountControl=512)))"/>
+              <entry key="primaryGroupSearchDN" value="CN=Domain Users,CN=Users,%%AD_APAC_DOMAIN%%"/>
+              <entry key="searchDN" value="OU=Migrated Objects,%%AD_APAC_DOMAIN%%"/>
+              <entry key="searchScope" value="SUBTREE"/>
+            </Map>
+            <Map>
+              <entry key="groupMembershipSearchDN" value="CN=Domain Users,CN=Users,%%AD_EMEA_DOMAIN%%"/>
+              <entry key="iterateSearchFilter" value="(&amp;(employeeID=*)(objectclass=user)(!(samaccountname=*_*))(!(samaccountname=*-*))(!(name=*+*))(!(name=*_*))(!(displayname=ca_*))(!(displayname=*+*))(!(displayname=sa_*))(!(displayname=mbx_*))(|(userAccountControl=544)(userAccountControl=546)(userAccountControl=514)(userAccountControl=512)))"/>
+              <entry key="primaryGroupSearchDN" value="CN=Domain Users,CN=Users,%%AD_EMEA_DOMAIN%%"/>
+              <entry key="searchDN" value="OU=Migrated Objects,%%AD_EMEA_DOMAIN%%"/>
+              <entry key="searchScope" value="SUBTREE"/>
+            </Map>
+            <Map>
+              <entry key="groupMembershipSearchDN" value="CN=Domain Users,CN=Users,%%AD_AMER_DOMAIN%%"/>
+              <entry key="iterateSearchFilter" value="(&amp;(employeeID=*)(objectclass=user)(!(samaccountname=*_*))(!(samaccountname=*-*))(!(name=*+*))(!(name=*_*))(!(displayname=ca_*))(!(displayname=*+*))(!(displayname=sa_*))(!(displayname=mbx_*))(|(userAccountControl=544)(userAccountControl=546)(userAccountControl=514)(userAccountControl=512)))"/>
+              <entry key="primaryGroupSearchDN" value="CN=Domain Users,CN=Users,%%AD_AMER_DOMAIN%%"/>
+              <entry key="searchDN" value="OU=zGraveyard,%%AD_AMER_DOMAIN%%"/>
+              <entry key="searchScope" value="SUBTREE"/>
+            </Map>
+          </List>
+        </value>
+      </entry>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="taggedApplication"/>
+      <entry key="templateApplication" value="Active Directory Template"/>
+      <entry key="useSSL" value="false"/>
+    </Map>
+  </Attributes>
+  <CorrelationRule>
+    <Reference class="sailpoint.object.Rule" name="IHG_CorrelationRule_ActiveDirectory"/>
+  </CorrelationRule>
+  <CustomizationRule>
+    <Reference class="sailpoint.object.Rule" name="IHG_CustomizationRule_AD"/>
+  </CustomizationRule>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <ProvisioningConfig deleteToDisable="true"/>
+  <ProvisioningForms>
+    <Form name="Disable" objectType="account" type="Disable">
+      <Attributes>
+        <Map>
+          <entry key="pageTitle" value="Disable"/>
+        </Map>
+      </Attributes>
+      <Section>
+        <Field filterString="" name="userAccountControl" type="int">
+          <Script>
+            <Source>
+return 514;</Source>
+        </Script>
+      </Field>
+      </Section>
+    </Form>
+    <Form name="Enable" objectType="account" type="Enable">
+      <Attributes>
+        <Map>
+          <entry key="pageTitle" value="Enable"/>
+        </Map>
+      </Attributes>
+      <Section>
+      <Field filterString="" name="userAccountControl" type="int">
+        <Script>
+          <Source>
+return 512;</Source>
+        </Script>
+      </Field>
+      </Section>
+    </Form>
+  </ProvisioningForms>
+  <Schemas>
+    <Schema displayAttribute="sAMAccountName" identityAttribute="distinguishedName" nativeObjectType="User" objectType="account">
+      <AttributeDefinition name="cn" type="string">
+        <Description>common name(s) for which the entity is known by</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="displayName" type="string">
+        <Description>preferred name to be used when displaying entries</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="distinguishedName" type="string">
+        <Description>distinguished name for which the entity is known by</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="employeeNumber" type="string">
+        <Description>numerically identifies an employee within an organization</Description>
+      </AttributeDefinition>
+      <AttributeDefinition multi="true" name="facsimileTelephoneNumber" type="string">
+        <Description>Facsimile (Fax) Telephone Number</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="givenName" type="string">
+        <Description>first name(s) for which the entity is known by</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="l" type="string">
+        <Description>city</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="mail" type="string">
+        <Description>RFC822 Mailbox</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="manager" type="string">
+        <Description>DN of manager</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="mobile" type="string">
+        <Description>mobile telephone number</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="o" type="string">
+        <Description>organization this object belongs to</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="physicalDeliveryOfficeName" type="string">
+        <Description>Physical Delivery Office Name</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="postalCode" type="string">
+        <Description>postal code</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="sn" type="string">
+        <Description>last (family) name(s) for which the entity is known by</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="st" type="string">
+        <Description>state or province which this object resides in</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="telephoneNumber" type="string">
+        <Description>Telephone Number</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="title" type="string">
+        <Description>title associated with the entity</Description>
+      </AttributeDefinition>
+      <AttributeDefinition multi="true" name="objectClass" type="string">
+        <Description>object classes of the entity</Description>
+      </AttributeDefinition>
+      <AttributeDefinition multi="true" name="memberof" schemaObjectType="group" type="string">
+        <Description>Group Membership</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="objectSid" type="string">
+        <Description>Windows Security Identifier</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="objectguid" type="string">
+        <Description>Object globally unique identifier </Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="sAMAccountName" type="string">
+        <Description>sAMAccountName</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="primaryGroupID" type="string">
+        <Description>RID of users primary group</Description>
+      </AttributeDefinition>
+      <AttributeDefinition multi="true" name="accountFlags" type="string">
+        <Description>List of the flags enabled on an account</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="department" type="string">
+        <Description>User's department</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="userPrincipalName" type="string">
+        <Description>userprincipalname</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="tCCEmailOptIn" type="string">
+        <Description>Travel Agent Email Communication Flag</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="tCCIATANumber" type="string">
+        <Description>IATA Number</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="tCCLoyaltyNumber" type="string">
+        <Description>PCR Number</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="msds-cloudextensionattribute16" type="string">
+        <Description>immutableID</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="msds-cloudextensionattribute15" type="string"/>
+      <AttributeDefinition name="assistant" type="string">
+        <Description>Assistant of the user </Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="userAccountControl" type="int">
+        <Description>Status of the user</Description>
+      </AttributeDefinition>
+      <AttributeDefinition multi="true" name="proxyAddresses" type="string">
+        <Description>proxyAddresses of User </Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="employeeID" type="string">
+        <Description>employeeID of User </Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="streetAddress" type="string">
+        <Description>primaryWorkAddress1 of Identity</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="c" type="string">
+        <Description>primaryworkisocountrycode of Identity</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="co" type="string">
+        <Description>primaryworkisocountrycode for travelagent</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="msDS-cloudExtensionAttribute20" type="string">
+        <Description>For franchise users</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="domain" type="string">
+        <Description>domain</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="extensionAttribute8" type="string"/>
+      <AttributeDefinition name="extensionAttribute15" type="string">
+        <Description>Brand Pulse Entitlement</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="extensionAttribute7" type="string"/>
+      <AttributeDefinition name="lastLogonTimestamp" type="string"/>
+      <AttributeDefinition name="userLastLogon" type="string"/>
+    </Schema>
+    <Schema displayAttribute="sAMAccountName" featuresString="PROVISIONING, GROUPS_HAVE_MEMBERS" hierarchyAttribute="memberof" identityAttribute="distinguishedName" nativeObjectType="Group" objectType="group">
+      <AttributeDefinition name="cn" type="string">
+        <Description>common name(s) for which the entity is known by</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="distinguishedName" type="string">
+        <Description>distinguished name for which the entity is known by</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="owner" type="string">
+        <Description>owner (of the object)</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="description" type="string">
+        <Description>descriptive information</Description>
+      </AttributeDefinition>
+      <AttributeDefinition multi="true" name="memberof" type="string">
+        <Description>Group Membership</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="objectSid" type="string">
+        <Description>Windows Security Identifier</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="objectguid" type="string">
+        <Description>Object globally unique identifier </Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="mailNickname" type="string">
+        <Description>Exchange Distribution Group Name</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="GroupType" type="string">
+        <Description>Group Type</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="GroupScope" type="string">
+        <Description>Group Scope</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="sAMAccountName" type="string">
+        <Description>sAMAccountName</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="msDS-PrincipalName" type="string">
+        <Description>Name of the entity in the format "NetBIOS domain name\sAMAccountName"</Description>
+      </AttributeDefinition>
+      <Attributes>
+        <Map>
+          <entry key="groupMemberAttribute" value="member"/>
+        </Map>
+      </Attributes>
+    </Schema>
+  </Schemas>
+</Application>

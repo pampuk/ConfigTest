@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Application connector="sailpoint.connector.DefaultLogicalConnector" featuresString="COMPOSITE, DISCOVER_SCHEMA" icon="enterpriseIcon" name="CyberArk Application" type="Logical">
+  <AssignedScope>
+    <Reference class="sailpoint.object.Scope"  name="Cyberark"/>
+  </AssignedScope>
+  <Attributes>
+    <Map>
+      <entry key="RetainEntitlementOverRemove">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="afterProvisioningRule"/>
+      <entry key="app_HotelId"/>
+      <entry key="app_brandCode"/>
+      <entry key="app_brandDesc"/>
+      <entry key="app_chainCode"/>
+      <entry key="app_city"/>
+      <entry key="app_countryName"/>
+      <entry key="app_facilityID"/>
+      <entry key="app_holidexCode"/>
+      <entry key="app_isMigratedHotel">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="app_isocountrycode"/>
+      <entry key="app_managementTypeCode"/>
+      <entry key="app_postalCode"/>
+      <entry key="app_region"/>
+      <entry key="app_regionText"/>
+      <entry key="app_state"/>
+      <entry key="app_streetAddress"/>
+      <entry key="beforeProvisioningRule"/>
+      <entry key="compositeDefinition">
+        <value>
+          <CompositeDefinition accountRule="IHG_AccountRule_CyberArk" primaryTier="IHG Corporate Directory" remediationRule="IHG_ProvisioningRule_CyberArk">
+            <Tiers>
+              <Tier application="IHG Corporate Directory" correlationRule=""/>
+              <Tier application="CyberArk Admin Account Application" correlationRule=""/>
+            </Tiers>
+          </CompositeDefinition>
+        </value>
+      </entry>
+      <entry key="disableLinkFiltering">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="disableManagedEntitlementFiltering">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="growthUpdated">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="grsBrandCode"/>
+      <entry key="grsRegionCode"/>
+      <entry key="is_Corporate">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionAttributeScope" value="entitlements"/>
+      <entry key="nativeChangeDetectionAttributes"/>
+      <entry key="nativeChangeDetectionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionOperations"/>
+      <entry key="onDeleteRemoveEntitlements">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="taggedApplication"/>
+      <entry key="templateApplication" value="Logical Template"/>
+    </Map>
+  </Attributes>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="CyberArk Approver WorkGroup"/>
+  </Owner>
+  <Schemas>
+    <Schema nativeObjectType="account" objectType="account">
+      <AttributeDefinition name="distinguishedName" source="IHG Corporate Directory.distinguishedName" type="string">
+        <Description>distinguished name for which the entity is known by</Description>
+      </AttributeDefinition>
+      <AttributeDefinition entitlement="true" managed="true" name="CyberArk_memberOf" type="string">
+        <Description>CyberArk Group Membership</Description>
+      </AttributeDefinition>
+    </Schema>
+  </Schemas>
+  <ApplicationScorecard/>
+</Application>

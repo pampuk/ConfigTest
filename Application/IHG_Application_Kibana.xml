@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Application connector="sailpoint.connector.DefaultLogicalConnector" featuresString="COMPOSITE, DISCOVER_SCHEMA" icon="enterpriseIcon" name="Kibana Application" type="Logical">
+  <Attributes>
+    <Map>
+      <entry key="RetainEntitlementOverRemove">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="afterProvisioningRule"/>
+      <entry key="app_HotelId"/>
+      <entry key="app_brandCode"/>
+      <entry key="app_brandDesc"/>
+      <entry key="app_chainCode"/>
+      <entry key="app_city"/>
+      <entry key="app_countryName"/>
+      <entry key="app_facilityID"/>
+      <entry key="app_holidexCode"/>
+      <entry key="app_hotelStatus"/>
+      <entry key="app_isMigratedHotel">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="app_isocountrycode"/>
+      <entry key="app_managementTypeCode"/>
+      <entry key="app_postalCode"/>
+      <entry key="app_region"/>
+      <entry key="app_regionText"/>
+      <entry key="app_state"/>
+      <entry key="app_streetAddress"/>
+      <entry key="beforeProvisioningRule"/>
+      <entry key="compositeDefinition">
+        <value>
+          <CompositeDefinition accountRule="IHG_AccountRule_LogicalApp" primaryTier="IHG Corporate Directory" remediationRule="IHG_ProvisioningRule_LogicalApp">
+            <Tiers>
+              <Tier application="IHG Corporate Directory" correlationRule=""/>
+            </Tiers>
+          </CompositeDefinition>
+        </value>
+      </entry>
+      <entry key="disableLinkFiltering">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="disableManagedEntitlementFiltering">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="growthUpdated">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="grsBrandCode"/>
+      <entry key="grsRegionCode"/>
+      <entry key="is_Corporate">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionAttributeScope" value="entitlements"/>
+      <entry key="nativeChangeDetectionAttributes"/>
+      <entry key="nativeChangeDetectionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionOperations"/>
+      <entry key="onDeleteRemoveEntitlements">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US" value="Giving access to KIBANA Logs"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="taggedApplication"/>
+      <entry key="templateApplication" value="Logical Template"/>
+    </Map>
+  </Attributes>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <Schemas>
+    <Schema nativeObjectType="account" objectType="account">
+      <AttributeDefinition name="cn" source="IHG Corporate Directory.cn" type="string">
+        <Description>common name(s) for which the entity is known by</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="displayName" source="IHG Corporate Directory.displayName" type="string">
+        <Description>preferred name to be used when displaying entries</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="distinguishedName" source="IHG Corporate Directory.distinguishedName" type="string">
+        <Description>distinguished name for which the entity is known by</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="employeeNumber" source="IHG Corporate Directory.employeeNumber" type="string">
+        <Description>numerically identifies an employee within an organization</Description>
+      </AttributeDefinition>
+      <AttributeDefinition multi="true" name="facsimileTelephoneNumber" source="IHG Corporate Directory.facsimileTelephoneNumber" type="string">
+        <Description>Facsimile (Fax) Telephone Number</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="givenName" source="IHG Corporate Directory.givenName" type="string">
+        <Description>first name(s) for which the entity is known by</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="l" source="IHG Corporate Directory.l" type="string">
+        <Description>city</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="mail" source="IHG Corporate Directory.mail" type="string">
+        <Description>RFC822 Mailbox</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="manager" source="IHG Corporate Directory.manager" type="string">
+        <Description>DN of manager</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="mobile" source="IHG Corporate Directory.mobile" type="string">
+        <Description>mobile telephone number</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="o" source="IHG Corporate Directory.o" type="string">
+        <Description>organization this object belongs to</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="physicalDeliveryOfficeName" source="IHG Corporate Directory.physicalDeliveryOfficeName" type="string">
+        <Description>Physical Delivery Office Name</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="postalCode" source="IHG Corporate Directory.postalCode" type="string">
+        <Description>postal code</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="sn" source="IHG Corporate Directory.sn" type="string">
+        <Description>last (family) name(s) for which the entity is known by</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="st" source="IHG Corporate Directory.st" type="string">
+        <Description>state or province which this object resides in</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="telephoneNumber" source="IHG Corporate Directory.telephoneNumber" type="string">
+        <Description>Telephone Number</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="title" source="IHG Corporate Directory.title" type="string">
+        <Description>title associated with the entity</Description>
+      </AttributeDefinition>
+      <AttributeDefinition multi="true" name="objectClass" source="IHG Corporate Directory.objectClass" type="string">
+        <Description>object classes of the entity</Description>
+      </AttributeDefinition>
+      <AttributeDefinition multi="true" name="memberof" source="IHG Corporate Directory.memberof" type="string">
+        <Description>Group Membership</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="objectSid" source="IHG Corporate Directory.objectSid" type="string">
+        <Description>Windows Security Identifier</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="objectguid" source="IHG Corporate Directory.objectguid" type="string">
+        <Description>Object globally unique identifier </Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="sAMAccountName" source="IHG Corporate Directory.sAMAccountName" type="string">
+        <Description>sAMAccountName</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="primaryGroupID" source="IHG Corporate Directory.primaryGroupID" type="string">
+        <Description>RID of users primary group</Description>
+      </AttributeDefinition>
+      <AttributeDefinition multi="true" name="accountFlags" source="IHG Corporate Directory.accountFlags" type="string">
+        <Description>List of the flags enabled on an account</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="department" source="IHG Corporate Directory.department" type="string">
+        <Description>User's department</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="userPrincipalName" source="IHG Corporate Directory.userPrincipalName" type="string">
+        <Description>userprincipalname</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="tCCEmailOptIn" source="IHG Corporate Directory.tCCEmailOptIn" type="string">
+        <Description>Travel Agent Email Communication Flag</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="tCCIATANumber" source="IHG Corporate Directory.tCCIATANumber" type="string">
+        <Description>IATA Number</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="tCCLoyaltyNumber" source="IHG Corporate Directory.tCCLoyaltyNumber" type="string">
+        <Description>PCR Number</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="msds-cloudextensionattribute16" source="IHG Corporate Directory.msds-cloudextensionattribute16" type="string">
+        <Description>immutableID</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="msds-cloudextensionattribute15" source="IHG Corporate Directory.msds-cloudextensionattribute15" type="string"/>
+      <AttributeDefinition name="assistant" source="IHG Corporate Directory.assistant" type="string">
+        <Description>Assistant of the user </Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="userAccountControl" source="IHG Corporate Directory.userAccountControl" type="string">
+        <Description>Status of the user</Description>
+      </AttributeDefinition>
+      <AttributeDefinition multi="true" name="proxyAddresses" source="IHG Corporate Directory.proxyAddresses" type="string">
+        <Description>proxyAddresses of User </Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="employeeID" source="IHG Corporate Directory.employeeID" type="string">
+        <Description>employeeID of User </Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="streetAddress" source="IHG Corporate Directory.streetAddress" type="string">
+        <Description>primaryWorkAddress1 of Identity</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="c" source="IHG Corporate Directory.c" type="string">
+        <Description>primaryworkisocountrycode of Identity</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="co" source="IHG Corporate Directory.co" type="string">
+        <Description>primaryworkisocountrycode for travelagent</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="msDS-cloudExtensionAttribute20" source="IHG Corporate Directory.msDS-cloudExtensionAttribute20" type="string">
+        <Description>For franchise users</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="domain" source="IHG Corporate Directory.domain" type="string">
+        <Description>domain</Description>
+      </AttributeDefinition>
+      <AttributeDefinition name="extensionAttribute8" source="IHG Corporate Directory.extensionAttribute8" type="string"/>
+      <AttributeDefinition name="extensionAttribute15" source="IHG Corporate Directory.extensionAttribute15" type="string">
+        <Description>Brand Pulse Entitlement</Description>
+      </AttributeDefinition>
+      <AttributeDefinition entitlement="true" multi="true" name="Kibana_memberOf" type="string">
+        <Description>Kibana Group Membership</Description>
+      </AttributeDefinition>
+    </Schema>
+  </Schemas>
+  <ApplicationScorecard/>
+</Application>

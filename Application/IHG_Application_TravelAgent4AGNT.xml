@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Application connector="sailpoint.connector.JDBCConnector" featuresString="DISCOVER_SCHEMA, PROVISIONING, SYNC_PROVISIONING, DIRECT_PERMISSIONS" icon="databaseIcon" name="Travel Agent : 4AGNT" type="JDBC">
+  <AccountCorrelationConfig>
+    <Reference class="sailpoint.object.CorrelationConfig" name="IHG_CorrelationRule_PDB_Hotel"/>
+  </AccountCorrelationConfig>
+  <Attributes>
+    <Map>
+      <entry key="SQL" value="select EMP_ID, HLDX_CD, TERM_DT, USR_TYP_CD, USR_STAT_CD, STRT_DT, PRIM_LOC_IND, JOB_CD from IHG_PDB_ROLE_FEED where HLDX_CD='4AGNT' and USR_STAT_CD in ('E','L') and USR_TYP_CD in ('A')"/>
+      <entry key="acctAggregationEnd">
+        <value>
+          <Date>1518686151223</Date>
+        </value>
+      </entry>
+      <entry key="acctAggregationStart">
+        <value>
+          <Date>1518685200563</Date>
+        </value>
+      </entry>
+      <entry key="afterProvisioningRule" value="IHG_Location_After_Provisioning_Rule"/>
+      <entry key="aggregationMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="app_HotelId"/>
+      <entry key="app_brandCode"/>
+      <entry key="app_brandDesc"/>
+      <entry key="app_city"/>
+      <entry key="app_countryName"/>
+      <entry key="app_facilityID"/>
+      <entry key="app_holidexCode" value="4AGNT"/>
+      <entry key="app_isMigratedHotel">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="app_isocountrycode"/>
+      <entry key="app_managementTypeCode"/>
+      <entry key="app_postalCode"/>
+      <entry key="app_region"/>
+      <entry key="app_state"/>
+      <entry key="app_streetAddress"/>
+      <entry key="compositeDefinition"/>
+      <entry key="deltaTable" value="IHG_PDB_ROLE_FEED"/>
+      <entry key="disableOrderingCheck" value="true"/>
+      <entry key="driverClass" value="%%JDBC_ORACLE_DRIVER%%"/>
+      <entry key="getDeltaSQL" value="select EMP_ID, HLDX_CD, TERM_DT, USR_TYP_CD, USR_STAT_CD, STRT_DT, PRIM_LOC_IND, JOB_CD from IHG_PDB_ROLE_FEED where HLDX_CD='4AGNT' and USR_STAT_CD in ('E','L') and USR_TYP_CD in ('A') and CAST(SYSDATE AS DATE) - CAST(LST_UPDT_TS AS DATE)&lt;3"/>
+      <entry key="getObjectSQL" value="select EMP_ID, HLDX_CD, TERM_DT, USR_TYP_CD, USR_STAT_CD, STRT_DT, PRIM_LOC_IND, JOB_CD from IHG_PDB_ROLE_FEED where EMP_ID='$(identity)'"/>
+      <entry key="growthUpdated">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="indexColumns">
+        <value>
+          <List>
+            <String>EMP_ID</String>
+          </List>
+        </value>
+      </entry>
+      <entry key="isPermissionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="is_Corporate">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="jdbcCreateProvisioningRule" value="IHG_ProvisioningRule_PeopleDB_Location_Insert"/>
+      <entry key="jdbcDisableProvisioningRule" value="IHG_ProvisioningRule_PeopleDB_Location_Disable"/>
+      <entry key="jdbcEnableProvisioningRule" value="IHG_ProvisioningRule_PeopleDB_Location_Modify"/>
+      <entry key="jdbcModifyProvisioningRule" value="IHG_ProvisioningRule_PeopleDB_Location_Modify"/>
+      <entry key="mergeColumns">
+        <value>
+          <List>
+            <String>JOB_INFO</String>
+            <String>Job Title</String>
+            <String>Start Date</String>
+            <String>Termination Date</String>
+            <String>User Status Code</String>
+          </List>
+        </value>
+      </entry>
+      <entry key="mergeRows">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionAttributeScope" value="entitlements"/>
+      <entry key="nativeChangeDetectionAttributes"/>
+      <entry key="nativeChangeDetectionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionOperations"/>
+      <entry key="partitionMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="partitionStatements"/>
+      <entry key="password" value="%%IDM_JDBC_PASSWORD%%"/>
+      <entry key="provisionRule" value="operationRule"/>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="templateApplication" value="JDBC Template"/>
+      <entry key="url" value="%%IDM_JDBC_URL%%"/>
+      <entry key="useExecuteQuery">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="user" value="%%IDM_JDBC_USERNAME%%"/>
+    </Map>
+  </Attributes>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <Schemas>
+    <Schema displayAttribute="EMP_ID" identityAttribute="EMP_ID" nativeObjectType="account" objectType="account" permissionsRemediationModificationType="None">
+      <AttributeDefinition name="EMP_ID" type="string"/>
+      <AttributeDefinition name="Holidex Code" type="string"/>
+      <AttributeDefinition name="User Type Code" type="string"/>
+      <AttributeDefinition name="Primary Location Indicator" type="string"/>
+      <AttributeDefinition name="Termination Date" type="string"/>
+      <AttributeDefinition name="User Status Code" type="string"/>
+      <AttributeDefinition name="JOB_INFO" type="string"/>
+      <AttributeDefinition name="Start Date" type="string"/>
+      <AttributeDefinition entitlement="true" name="Job Title" type="string"/>
+    </Schema>
+  </Schemas>
+  <ApplicationScorecard/>
+</Application>

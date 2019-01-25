@@ -1,0 +1,313 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Application connector="sailpoint.connector.JDBCConnector" featuresString="DISCOVER_SCHEMA, PROVISIONING, SYNC_PROVISIONING, DIRECT_PERMISSIONS" icon="databaseIcon" name="Clarity Application" type="JDBC">
+ <AssignedScope>
+    <Reference class="sailpoint.object.Scope"  name="Clarity"/>
+  </AssignedScope>
+  <Attributes>
+    <Map>
+      <entry key="SQL" value="select 1 userName,2 PpmUserStatus,3 emailAddress,4 lastName,5 firstName,6 companyId,7 displayName,8 middleName,9 ihg_network_id,10 resourceId,11 managerUserName,12 groups,13 OndemandUserStatus,14 UAFStatus,15 CLARITYENTITLEMENT ,16 DUMMY_UAF_DATA ,17 COUNTRYCODE from dual"/>
+      <entry key="afterProvisioningRule" value="IHG_Customrule_Clarity_PostProvision"/>
+      <entry key="aggregationMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="app_HotelId"/>
+      <entry key="app_brandCode"/>
+      <entry key="app_brandDesc"/>
+      <entry key="app_chainCode"/>
+      <entry key="app_city"/>
+      <entry key="app_countryName"/>
+      <entry key="app_facilityID"/>
+      <entry key="app_holidexCode"/>
+      <entry key="app_holidexCodetb"/>
+      <entry key="app_isMigratedHotel">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="app_isocountrycode"/>
+      <entry key="app_managementTypeCode"/>
+      <entry key="app_postalCode"/>
+      <entry key="app_region"/>
+      <entry key="app_regionText"/>
+      <entry key="app_state"/>
+      <entry key="app_streetAddress"/>
+      <entry key="compositeDefinition"/>
+      <entry key="deltaTable"/>
+      <entry key="driverClass" value="%%JDBC_ORACLE_DRIVER%%"/>
+      <entry key="getDeltaSQL"/>
+      <entry key="growthUpdated">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="grsBrandCode"/>
+      <entry key="isPermissionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="is_Corporate">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="jdbcCreateProvisioningRule" value="IHG_ProvisioningRule_Clarity_Insert"/>
+      <entry key="jdbcDeleteProvisioningRule" value="IHG_ProvisioningRule_Clarity_Delete"/>
+      <entry key="jdbcModifyProvisioningRule" value="IHG_ProvisioningRule_Clarity_Update"/>
+      <entry key="mergeRows">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionAttributeScope" value="entitlements"/>
+      <entry key="nativeChangeDetectionAttributes"/>
+      <entry key="nativeChangeDetectionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionOperations"/>
+      <entry key="partitionMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="partitionStatements"/>
+      <entry key="password" value="%%IDM_JDBC_PASSWORD%%"/>
+      <entry key="provisionRule" value="operationRule"/>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="taggedApplication"/>
+      <entry key="templateApplication" value="JDBC Template"/>
+      <entry key="url" value="%%IDM_JDBC_URL%%"/>
+      <entry key="useExecuteQuery">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="user" value="%%IDM_JDBC_USERNAME%%"/>
+    </Map>
+  </Attributes>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <ProvisioningForms>
+    <Form name="Update Clarity Account" objectType="account" type="Update">
+      <Description>Update Clarity Account</Description>
+      <Field displayName="MANAGERUSERNAME" filterString="" name="MANAGERUSERNAME" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="getManagerResourceID_FromClarity"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="LASTNAME" filterString="" name="LASTNAME" required="true" type="string">
+        <Script>
+          <Source>identity.getAttribute("lastname")</Source>
+        </Script>
+      </Field>
+      <Field displayName="IHG_NETWORK_ID" filterString="" name="IHG_NETWORK_ID" required="true" type="string">
+        <Script>
+          <Source>identity.getAttribute("networkid")</Source>
+        </Script>
+      </Field>
+       <Field displayName="DUMMY_UAF_DATA" name="DUMMY_UAF_DATA" type="string">
+          <Script>
+            <Includes>
+              <Reference class="sailpoint.object.Rule" id="" name="IHG_Rule_Library_ManageAccessGenericFramework"/>
+            </Includes>
+            <Source>
+			 return method_getProvFormDummyFieldValues("MYID_replaceChar1",project,application);
+            </Source>
+          </Script>
+        </Field>
+      <Field displayName="EMAILADDRESS" filterString="" name="EMAILADDRESS" required="true" type="string">
+        <Script>
+          <Source>identity.getAttribute("email").toLowerCase();</Source>
+        </Script>
+      </Field>
+      <Field displayName="FIRSTNAME" filterString="" name="FIRSTNAME" required="true" type="string">
+        <Script>
+          <Source>identity.getAttribute("firstname")</Source>
+        </Script>
+      </Field>
+      <Field displayName="WDCOSTCENTER" filterString="" name="WDCOSTCENTER" type="string">
+        <Script>
+          <Source>identity.getAttribute("costcentercd")</Source>
+        </Script>
+      </Field>
+      <Field displayName="RESOURCEID" filterString="" name="RESOURCEID" required="true" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="getResourceID_ClarityUpdate"/>
+        </RuleRef>
+      </Field>
+       <Field displayName="DUMMY_UAF_NOTES" name="DUMMY_UAF_NOTES" type="string">
+          <Script>
+            <Includes>
+              <Reference class="sailpoint.object.Rule" id="" name="IHG_Rule_Library_ManageAccessGenericFramework"/>
+            </Includes>
+            <Source>
+			return method_getProvFormDummyFieldValues("MYID_replaceChar2",project,application);
+			</Source>
+          </Script>
+        </Field>
+	  <Field displayName="GROUPS" filterString="" name="GROUPS" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="getGroupsForClarityCreate"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="PPMUSERSTATUS" filterString="" name="PPMUSERSTATUS" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="getUserStatusForClarity"/>
+        </RuleRef>
+      </Field>
+    </Form>
+    <Form name="Delete Clarity" objectType="account" type="Delete">
+      <Description>Delete Clarity</Description>
+      <Field displayName="USERNAME" filterString="" name="USERNAME" required="true" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="IHG_ProvisioningForm_Disable_getUserName"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="FIRSTNAME" filterString="" name="FIRSTNAME" required="true" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="IHG_ProvisioningForm_Disable_getFirstName"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="LASTNAME" filterString="" name="LASTNAME" required="true" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="IHG_ProvisioningForm_Disable_getFirstName"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="RESOURCEID" filterString="" name="RESOURCEID" required="true" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="IHG_ProvisioningForm_Disable_getFirstName"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="DISPLAYNAME" filterString="" name="DISPLAYNAME" required="true" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="IHG_ProvisioningForm_Disable_getFirstName"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="COMPANYID" filterString="" name="COMPANYID" required="true" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="IHG_ProvisioningForm_Disable_getFirstName"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="PPMUSERSTATUS" filterString="" name="PPMUSERSTATUS" required="true" type="string" value="INACTIVE"/>
+    </Form>
+    <Form name="Create Clarity Account" objectType="account" type="Create">
+      <Attributes>
+        <Map>
+          <entry key="IIQTemplateOwnerDefinition">
+            <value>
+              <DynamicValue value=""/>
+            </value>
+          </entry>
+        </Map>
+      </Attributes>
+      <Description>Create Clarity Account</Description>
+      <Field displayName="USERNAME" filterString="" name="USERNAME" required="true" type="string">
+        <Script>
+          <Source>identity.getAttribute("email").toLowerCase();</Source>
+        </Script>
+      </Field>
+      <Field displayName="PPMUSERSTATUS" filterString="" name="PPMUSERSTATUS" required="true" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="getUserStatusForClarity"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="COMPANYID" filterString="" name="COMPANYID" type="string"/>
+      <Field displayName="DISPLAYNAME" filterString="" name="DISPLAYNAME" required="true" type="string">
+        <Script>
+          <Source>identity.getDisplayName()</Source>
+        </Script>
+      </Field>
+      <Field displayName="IHG_NETWORK_ID" filterString="" name="IHG_NETWORK_ID" required="true" type="string">
+        <Script>
+          <Source>identity.getAttribute("networkid")</Source>
+        </Script>
+      </Field>
+      <Field displayName="RESOURCEID" filterString="" name="RESOURCEID" required="true" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="getResourceID_ClarityCreate"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="MANAGERUSERNAME" filterString="" name="MANAGERUSERNAME" required="true" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="getManagerResourceID_FromClarity"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="GROUPS" filterString="" name="GROUPS" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="getGroupsForClarityCreate"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="MIDDLENAME" filterString="" name="MIDDLENAME" type="string"/>
+      <Field displayName="LASTNAME" filterString="" name="LASTNAME" required="true" type="string">
+        <Script>
+          <Source>identity.getAttribute("lastname")</Source>
+        </Script>
+      </Field>
+      <Field displayName="EMAILADDRESS" filterString="" name="EMAILADDRESS" required="true" type="string">
+        <Script>
+          <Source>identity.getAttribute("email").toLowerCase();</Source>
+        </Script>
+      </Field>
+      <Field displayName="WDCOSTCENTER" filterString="" name="WDCOSTCENTER" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="getWDCostCednter_clarityCreate"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="FIRSTNAME" filterString="" name="FIRSTNAME" required="true" type="string">
+        <Script>
+          <Source>identity.getAttribute("firstname")</Source>
+        </Script>
+      </Field>
+      <Field displayName="DUMMY_UAF_DATA" filterString="" name="DUMMY_UAF_DATA" required="true" type="string" value="MYID_replaceChar1"/>
+      <Field displayName="IMMUTABLEID" filterString="" name="IMMUTABLEID" required="true" type="string">
+        <Script>
+          <Source>identity.getAttribute("immutableid");</Source>
+        </Script>
+      </Field>
+      <Field displayName="EMPLOYEEID" filterString="" name="EMPLOYEEID" required="true" type="string">
+        <Script>
+          <Source>identity.getName();</Source>
+        </Script>
+      </Field>
+      <Field displayName="DUMMY_UAF_NOTES" filterString="" name="DUMMY_UAF_NOTES" required="true" type="string" value="MYID_replaceChar2"/>
+    </Form>
+  </ProvisioningForms>
+  <Schemas>
+    <Schema displayAttribute="EMAILADDRESS" identityAttribute="EMAILADDRESS" nativeObjectType="account" objectType="account" permissionsRemediationModificationType="None">
+      <AttributeDefinition name="USERNAME" type="string"/>
+      <AttributeDefinition name="PPMUSERSTATUS" type="string"/>
+      <AttributeDefinition name="EMAILADDRESS" type="string"/>
+      <AttributeDefinition name="LASTNAME" type="string"/>
+      <AttributeDefinition name="FIRSTNAME" type="string"/>
+      <AttributeDefinition name="COMPANYID" type="string"/>
+      <AttributeDefinition name="DISPLAYNAME" type="string"/>
+      <AttributeDefinition name="MIDDLENAME" type="string"/>
+      <AttributeDefinition name="IHG_NETWORK_ID" type="string"/>
+      <AttributeDefinition name="RESOURCEID" type="string"/>
+      <AttributeDefinition name="MANAGERUSERNAME" type="string"/>
+      <AttributeDefinition multi="true" name="GROUPS" type="string"/>
+      <AttributeDefinition name="ONDEMANDUSERSTATUS" type="string"/>
+      <AttributeDefinition entitlement="true" managed="true" name="CLARITYENTITLEMENT" type="string"/>
+      <AttributeDefinition name="DUMMY_UAF_DATA" type="string"/>
+      <AttributeDefinition name="UAF_STATUS" type="string"/>
+      <AttributeDefinition name="EMPLOYEEID" type="string"/>
+      <AttributeDefinition name="TERMINATIONDATE" type="string"/>
+      <AttributeDefinition name="WDCOSTCENTER" type="string"/>
+      <AttributeDefinition name="IMMUTABLEID" type="string"/>
+      <AttributeDefinition name="DUMMY_UAF_NOTES" type="string"/>
+    </Schema>
+  </Schemas>
+  <ApplicationScorecard/>
+</Application>

@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Application connector="sailpoint.connector.JDBCConnector" featuresString="DISCOVER_SCHEMA, PROVISIONING, SYNC_PROVISIONING, DIRECT_PERMISSIONS" icon="databaseIcon" name="RSA Archer Application" type="JDBC">
+  <AssignedScope>
+    <Reference class="sailpoint.object.Scope"  name="RSA Archer"/>
+  </AssignedScope>
+  <Attributes>
+    <Map>
+      <entry key="SQL" value="select 'a' ID,'a' DISPLAYNAME,'a' FIRSTNAME,'a' LASTNAME,'a' MIDDLENAME,'a' LASTLOGINDATE,'a' USERNAME,'a' ACCOUNTSTATUS, 'a' DOMAINID,'a' SECURITYID,'a' LOCALE,'a' TIMEZONEID,'a' ADDRESS,'a' COMPANY,'a' TITLE,'a' ADDITIONALNOTE,'a' BUSINESSUNIT,'a' DEPARTMENT,'a' FORCEPASSWORDCHANGE,'a' DISTINGUISHEDNAME,'a' LANGUAGEID,'a' DEFAULTHOMEDASHBOARDID,'a' TYPE,'a' DEFAULTHOMEWORKSPACEID,'a' UPDATEINFORMATION,'a' groups from dual"/>
+      <entry key="afterProvisioningRule" value="IHG_CustomRule_RSAArcher_AfterProvisioning"/>
+      <entry key="aggregationMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="app_HotelId"/>
+      <entry key="app_brandCode"/>
+      <entry key="app_brandDesc"/>
+      <entry key="app_chainCode"/>
+      <entry key="app_city"/>
+      <entry key="app_countryName"/>
+      <entry key="app_facilityID"/>
+      <entry key="app_holidexCode"/>
+      <entry key="app_holidexCodetb"/>
+      <entry key="app_isMigratedHotel">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="app_isocountrycode"/>
+      <entry key="app_managementTypeCode"/>
+      <entry key="app_postalCode"/>
+      <entry key="app_region"/>
+      <entry key="app_regionText"/>
+      <entry key="app_state"/>
+      <entry key="app_streetAddress"/>
+      <entry key="compositeDefinition"/>
+      <entry key="deltaTable"/>
+      <entry key="driverClass" value="%%JDBC_ORACLE_DRIVER%%"/>
+      <entry key="getDeltaSQL"/>
+      <entry key="getObjectSQL" value="select 'a' ID,'a' DISPLAYNAME,'a' FIRSTNAME,'a' LASTNAME,'a' MIDDLENAME,'a' LASTLOGINDATE,'a' USERNAME,'a' ACCOUNTSTATUS, 'a' DOMAINID,'a' SECURITYID,'a' LOCALE,'a' TIMEZONEID,'a' ADDRESS,'a' COMPANY,'a' TITLE,'a' ADDITIONALNOTE,'a' BUSINESSUNIT,'a' DEPARTMENT,'a' FORCEPASSWORDCHANGE,'a' DISTINGUISHEDNAME,'a' LANGUAGEID,'a' DEFAULTHOMEDASHBOARDID,'a' TYPE,'a' DEFAULTHOMEWORKSPACEID,'a' UPDATEINFORMATION,'a' groups from dual"/>
+      <entry key="growthUpdated">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="grsBrandCode"/>
+      <entry key="isPermissionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="is_Corporate">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="jdbcCreateProvisioningRule" value="IHG_ProvisioningRule_RSAArcher_JDBCCreateProvision"/>
+      <entry key="jdbcDisableProvisioningRule" value="IHG_ProvisioningRule_RSAArcher_JDBCDisableProvision"/>
+      <entry key="jdbcEnableProvisioningRule" value="IHG_ProvisioningRule_RSAArcher_JDBCEnableProvision"/>
+      <entry key="jdbcModifyProvisioningRule" value="IHG_ProvisioningRule_RSAArcher_JDBCModifyProvision"/>
+      <entry key="mergeRows">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionAttributeScope" value="entitlements"/>
+      <entry key="nativeChangeDetectionAttributes"/>
+      <entry key="nativeChangeDetectionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionOperations"/>
+      <entry key="partitionMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="partitionStatements"/>
+      <entry key="password" value="%%IDM_JDBC_PASSWORD%%"/>
+      <entry key="provisionRule" value="operationRule"/>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="taggedApplication"/>
+      <entry key="templateApplication" value="JDBC Template"/>
+      <entry key="url" value="%%IDM_JDBC_URL%%"/>
+      <entry key="useExecuteQuery">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="user" value="%%IDM_JDBC_USERNAME%%"/>
+    </Map>
+  </Attributes>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <ProvisioningForms>
+    <Form name="RSAArcher_Create_Provisioning_Form" objectType="account" type="Create">
+      <Attributes>
+        <Map>
+          <entry key="IIQTemplateOwnerDefinition">
+            <value>
+              <DynamicValue value=""/>
+            </value>
+          </entry>
+        </Map>
+      </Attributes>
+      <Field displayName="FIRSTNAME" filterString="" name="FIRSTNAME" type="string">
+        <Script>
+          <Source>identity.getAttribute("firstname");</Source>
+        </Script>
+      </Field>
+      <Field displayName="LASTNAME" filterString="" name="LASTNAME" type="string">
+        <Script>
+          <Source>identity.getAttribute("lastname");</Source>
+        </Script>
+      </Field>
+      <Field displayName="USERNAME" filterString="" name="USERNAME" required="true" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="IHG_CustomRule_GetUserPrincipalNameAD"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="COMPANY" filterString="" name="COMPANY" type="string">
+        <Script>
+          <Source>identity.getAttribute("company");</Source>
+        </Script>
+      </Field>
+      <Field displayName="TITLE" filterString="" name="TITLE" type="string">
+        <Script>
+          <Source>identity.getAttribute("title");</Source>
+        </Script>
+      </Field>
+      <Field displayName="DEFAULTHOMEDASHBOARDID" filterString="" name="DEFAULTHOMEDASHBOARDID" type="string">
+        <RuleRef>
+          <Reference class="sailpoint.object.Rule" name="IHG_CustomRule_RSA_GetHomeDashBoardID"/>
+        </RuleRef>
+      </Field>
+      <Field displayName="TIMEZONEID" filterString="" name="TIMEZONEID" type="string" value="Eastern Standard Time"/>
+      <Field displayName="DEFAULTEMAIL" filterString="" name="DEFAULTEMAIL" type="string">
+        <Script>
+          <Source>identity.getAttribute("email");</Source>
+        </Script>
+      </Field>
+    </Form>
+  </ProvisioningForms>
+  <Schemas>
+    <Schema displayAttribute="USERNAME" identityAttribute="USERNAME" nativeObjectType="account" objectType="account" permissionsRemediationModificationType="None">
+      <AttributeDefinition name="ID" type="string"/>
+      <AttributeDefinition name="DISPLAYNAME" type="string"/>
+      <AttributeDefinition name="FIRSTNAME" type="string"/>
+      <AttributeDefinition name="LASTNAME" type="string"/>
+      <AttributeDefinition name="MIDDLENAME" type="string"/>
+      <AttributeDefinition name="LASTLOGINDATE" type="string"/>
+      <AttributeDefinition name="USERNAME" type="string"/>
+      <AttributeDefinition name="ACCOUNTSTATUS" type="string"/>
+      <AttributeDefinition name="DOMAINID" type="string"/>
+      <AttributeDefinition name="SECURITYID" type="string"/>
+      <AttributeDefinition name="LOCALE" type="string"/>
+      <AttributeDefinition name="TIMEZONEID" type="string"/>
+      <AttributeDefinition name="ADDRESS" type="string"/>
+      <AttributeDefinition name="COMPANY" type="string"/>
+      <AttributeDefinition name="TITLE" type="string"/>
+      <AttributeDefinition name="ADDITIONALNOTE" type="string"/>
+      <AttributeDefinition name="BUSINESSUNIT" type="string"/>
+      <AttributeDefinition name="DEPARTMENT" type="string"/>
+      <AttributeDefinition name="FORCEPASSWORDCHANGE" type="string"/>
+      <AttributeDefinition name="DISTINGUISHEDNAME" type="string"/>
+      <AttributeDefinition name="TYPE" type="string"/>
+      <AttributeDefinition name="LANGUAGEID" type="string"/>
+      <AttributeDefinition name="DEFAULTHOMEDASHBOARDID" type="string"/>
+      <AttributeDefinition name="DEFAULTHOMEWORKSPACEID" type="string"/>
+      <AttributeDefinition name="UPDATEINFORMATION" type="string"/>
+      <AttributeDefinition entitlement="true" managed="true" multi="true" name="groups" type="string"/>
+      <AttributeDefinition name="DEFAULTEMAIL" type="string"/>
+    </Schema>
+  </Schemas>
+  <ApplicationScorecard/>
+</Application>

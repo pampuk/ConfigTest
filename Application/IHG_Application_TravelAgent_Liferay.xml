@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Application connector="sailpoint.connector.JDBCConnector" featuresString="DISCOVER_SCHEMA, PROVISIONING, SYNC_PROVISIONING, DIRECT_PERMISSIONS" icon="databaseIcon" name="TravelAgent Liferay" type="JDBC">
+  <AccountCorrelationConfig>
+    <Reference class="sailpoint.object.CorrelationConfig" name="IHG_CorrelationRule_Account_Liferay"/>
+  </AccountCorrelationConfig>
+  <AssignedScope>
+    <Reference class="sailpoint.object.Scope"  name="Liferay"/>
+  </AssignedScope>
+  <Attributes>
+    <Map>
+      <entry key="SQL" value="select * from TCC.TCC_JOB_QUEUE where SUPPLEMENTAL_USR_INFO_TXT like 'C%'"/>
+      <entry key="app_HotelId"/>
+      <entry key="app_brandCode"/>
+      <entry key="app_brandDesc"/>
+      <entry key="app_city"/>
+      <entry key="app_countryName"/>
+      <entry key="app_facilityID"/>
+      <entry key="app_holidexCode"/>
+      <entry key="app_isMigratedHotel">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="app_isocountrycode"/>
+      <entry key="app_managementTypeCode"/>
+      <entry key="app_postalCode"/>
+      <entry key="app_region"/>
+      <entry key="app_state"/>
+      <entry key="app_streetAddress"/>
+      <entry key="compositeDefinition"/>
+      <entry key="deltaTable"/>
+      <entry key="driverClass" value="%%JDBC_ORACLE_DRIVER%%"/>
+      <entry key="getDeltaSQL"/>
+      <entry key="getObjectSQL" value="select * from TCC.TCC_JOB_QUEUE where SUPPLEMENTAL_USR_INFO_TXT='$(identity)'"/>
+      <entry key="growthUpdated">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="indexColumns">
+        <value>
+          <List>
+            <String>EMP_ID</String>
+          </List>
+        </value>
+      </entry>
+      <entry key="isPermissionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="is_Corporate">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="jdbcCreateProvisioningRule" value="IHG_ProvisioningRule_Liferay_Create"/>
+      <entry key="mergeColumns">
+        <value>
+          <List>
+            <String>EMP_ID</String>
+          </List>
+        </value>
+      </entry>
+      <entry key="mergeRows">
+        <value>
+          <Boolean>true</Boolean>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionAttributeScope" value="entitlements"/>
+      <entry key="nativeChangeDetectionAttributes"/>
+      <entry key="nativeChangeDetectionEnabled">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionOperations"/>
+      <entry key="partitionMode">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="partitionStatements"/>
+      <entry key="password" value="%%TA_LR_PASSWORD%%"/>
+      <entry key="provisionRule" value="operationRule"/>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="templateApplication" value="JDBC Template"/>
+      <entry key="url" value="%%TA_LR_URL%%"/>
+      <entry key="useExecuteQuery">
+        <value>
+          <Boolean/>
+        </value>
+      </entry>
+      <entry key="user" value="%%TA_LR_USERNAME%%"/>
+    </Map>
+  </Attributes>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <Schemas>
+    <Schema displayAttribute="SUPPLEMENTAL_USR_INFO_TXT" identityAttribute="SUPPLEMENTAL_USR_INFO_TXT" nativeObjectType="account" objectType="account" permissionsRemediationModificationType="None">
+      <AttributeDefinition name="JOB_ID" type="string"/>
+      <AttributeDefinition name="USR_FRST_NM" type="string"/>
+      <AttributeDefinition name="USR_LST_NM" type="string"/>
+      <AttributeDefinition name="USR_EMAIL_ID" type="string"/>
+      <AttributeDefinition name="CTRY_CD" type="string"/>
+      <AttributeDefinition name="IATA_NBR" type="string"/>
+      <AttributeDefinition name="MBRSHP_IND" type="string"/>
+      <AttributeDefinition name="MBRSHP_ID" type="string"/>
+      <AttributeDefinition name="TCC_EMAIL_OPT_IN_IND" type="string"/>
+      <AttributeDefinition name="USR_INFO_TXT" type="string"/>
+      <AttributeDefinition name="SUPPLEMENTAL_USR_INFO_TXT" type="string"/>
+      <AttributeDefinition name="JOB_SUBMIT_DT" type="string"/>
+      <AttributeDefinition name="JOB_STAT_CD" type="string"/>
+      <AttributeDefinition name="JOB_STAT_UPDT_DT" type="string"/>
+      <AttributeDefinition name="JOB_STAT_MSG_TXT" type="string"/>
+      <AttributeDefinition name="JOB_EXECUTION_IND" type="string"/>
+      <AttributeDefinition name="JOB_CMPL_DT" type="string"/>
+      <AttributeDefinition name="CREAT_USR_ID" type="string"/>
+      <AttributeDefinition name="CREAT_TS" type="string"/>
+      <AttributeDefinition name="LST_UPDT_USR_ID" type="string"/>
+      <AttributeDefinition name="LST_UPDT_TS" type="string"/>
+    </Schema>
+  </Schemas>
+  <ApplicationScorecard/>
+</Application>

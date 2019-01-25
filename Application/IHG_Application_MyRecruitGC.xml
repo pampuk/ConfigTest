@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Application PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Application assignedScopePath="8a53f2a0628b195601628cbd0b2601ab:8a53f2a066769cb10166a56819e636ce" connector="sailpoint.connector.JDBCConnector"  featuresString="DISCOVER_SCHEMA, PROVISIONING, SYNC_PROVISIONING, DIRECT_PERMISSIONS, SEARCH, ENABLE, UNLOCK" icon="databaseIcon" name="MyRecruit Greater China 洲聘" type="JDBC">
+  <AssignedScope>
+    <Reference class="sailpoint.object.Scope" name="Lumesse Talentlink GC Application"/>
+  </AssignedScope>
+  <Attributes>
+    <Map>
+      <entry key="SQL" value="select &apos;a&apos; ATS_ID,&apos;a&apos; firstName,&apos;a&apos; lastName,&apos;a&apos; mail,&apos;a&apos; ATSLogin,&apos;a&apos; TALENTLINK_MYID_ENTITLEMENT,&apos;a&apos; enabled, &apos;a&apos; DUMMY_DATA, &apos;a&apos; TALENTLINK_ROLE_DTLS from dual"/>
+      <entry key="afterProvisioningRule" value="IHG_CustomRule_TalentLink_AfterProvisioning"/>
+      <entry key="aggregationMode">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="app_HotelId"/>
+      <entry key="app_brandCode"/>
+      <entry key="app_brandDesc"/>
+      <entry key="app_chainCode"/>
+      <entry key="app_city"/>
+      <entry key="app_countryName"/>
+      <entry key="app_facilityID"/>
+      <entry key="app_holidexCode"/>
+      <entry key="app_hotelGrowthStatus"/>
+      <entry key="app_hotelStatus"/>
+      <entry key="app_isMigratedHotel">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="app_isocountrycode"/>
+      <entry key="app_managementTypeCode"/>
+      <entry key="app_postalCode"/>
+      <entry key="app_region"/>
+      <entry key="app_regionText"/>
+      <entry key="app_state"/>
+      <entry key="app_streetAddress"/>
+      <entry key="beforeProvisioningRule"/>
+      <entry key="compositeDefinition"/>
+      <entry key="deltaTable"/>
+      <entry key="driverClass" value="%%JDBC_ORACLE_DRIVER%%"/>
+      <entry key="getDeltaSQL"/>
+      <entry key="getObjectSQL" value="select &apos;a&apos; ATS_ID,&apos;a&apos; firstName,&apos;a&apos; lastName,&apos;a&apos; mail,&apos;a&apos; ATSLogin,&apos;a&apos; TALENTLINK_MYID_ENTITLEMENT,&apos;a&apos; enabled, &apos;a&apos; DUMMY_DATA, &apos;a&apos; TALENTLINK_ROLE_DTLS from dual"/>
+      <entry key="growthUpdated">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="grsBrandCode"/>
+      <entry key="grsRegionCode"/>
+      <entry key="isPermissionEnabled">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="is_Corporate">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="jdbcCreateProvisioningRule" value="IHG_ProvisioningRule_TalentLink_JDBCCreateProvision"/>
+      <entry key="jdbcDisableProvisioningRule" value="IHG_ProvisioningRule_TalentLink_JDBCDisableProvision"/>
+      <entry key="jdbcEnableProvisioningRule" value="IHG_ProvisioningRule_TalentLink_JDBCEnableProvision"/>
+      <entry key="jdbcModifyProvisioningRule" value="IHG_ProvisioningRule_TalentLink_JDBCModifyProvision"/>
+      <entry key="mergeRows">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionAttributeScope" value="entitlements"/>
+      <entry key="nativeChangeDetectionAttributes"/>
+      <entry key="nativeChangeDetectionEnabled">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="nativeChangeDetectionOperations"/>
+      <entry key="partitionMode">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="partitionStatements"/>
+      <entry key="password" value="%%IDM_JDBC_PASSWORD%%"/>
+      <entry key="provisionRule" value="operationRule"/>
+      <entry key="provisioningMaxRetries" value="4"/>
+      <entry key="provisioningRetryThreshold" value="720"/>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+      <entry key="taggedApplication"/>
+      <entry key="templateApplication" value="JDBC Template"/>
+      <entry key="testConnSQL"/>
+      <entry key="url" value="%%IDM_JDBC_URL%%"/>
+      <entry key="useExecuteQuery">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureDelta">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureDirectPermission">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureGetObject">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="useStoredProcedurePartition">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureSqlStmt">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="useStoredProcedureTestConn">
+        <value>
+          <Boolean></Boolean>
+        </value>
+      </entry>
+      <entry key="user" value="%%IDM_JDBC_USERNAME%%"/>
+    </Map>
+  </Attributes>
+  <Owner>
+    <Reference class="sailpoint.object.Identity"  name="spadmin"/>
+  </Owner>
+  <PasswordPolicies>
+    <PasswordPolicyHolder >
+      <PolicyRef>
+        <Reference class="sailpoint.object.PasswordPolicy" name="ATS GC Password Policy"/>
+      </PolicyRef>
+    </PasswordPolicyHolder>
+  </PasswordPolicies>
+  <ProvisioningForms>
+    <Form name="Create_Provisioning_Policy_Talentlink" objectType="account" type="Create">
+      <Attributes>
+        <Map>
+          <entry key="pageTitle" value="Create_Provisioning_Policy_Talentlink"/>
+        </Map>
+      </Attributes>
+      <Section name="Section 1">
+        <Field displayName="Last Name" name="lastName" type="string">
+          <Script>
+            <Source>identity.getLastname()</Source>
+          </Script>
+        </Field>
+        <Field displayName="First Name" name="firstName" type="string">
+          <Script>
+            <Source>identity.getFirstname()</Source>
+          </Script>
+        </Field>
+        <Field displayName="ATSLogin" name="ATSLogin" required="true" type="string">
+          <Script>
+            <Source>identity.getName()</Source>
+          </Script>
+        </Field>
+        <Field displayName="Mail" name="mail" type="string">
+          <Script>
+            <Source>if(identity.getEmail()!=null)
+              {
+              return identity.getEmail();
+              }
+              else
+              {
+              return identity.getAttribute("altEmail");
+              }</Source>
+          </Script>
+        </Field>
+        <Field displayName="Cellphone" name="cellphone" type="string">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule" name="IHG_CustomRule_ATS_ProvisioningForm_Cellphone"/>
+          </RuleRef>
+        </Field>
+        <Field displayName="Date Format" name="dateFormat" type="string">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule" name="IHG_CustomRule_ATS_GC_ProvisioningForm_dateFormat"/>
+          </RuleRef>
+        </Field>
+        <Field displayName="Password" name="password" type="secret">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule" name="IHG_CustomRule_ATS_GC_ProvisioningForm_GeneratePassword"/>
+          </RuleRef>
+        </Field>
+        <Field displayName="Time Zone" name="timeZone" type="string">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule" name="IHG_CustomRule_ATS_GC_ProvisioningForm_timeZone"/>
+          </RuleRef>
+        </Field>
+        <Field displayName="Password Type" name="passwordType" type="string">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule" name="IHG_CustomRule_ATS_GC_ProvisioningForm_PasswordType"/>
+          </RuleRef>
+        </Field>
+        <Field displayName="Time Format" name="timeFormat" type="string">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule" name="IHG_CustomRule_ATS_GC_ProvisioningForm_timeFormat"/>
+          </RuleRef>
+        </Field>
+        <Field displayName="First Day Of Week" name="firstDayOfWeek" type="string">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule" name="IHG_CustomRule_ATS_GC_ProvisioningForm_firstDayOfWeek"/>
+          </RuleRef>
+        </Field>
+        <Field displayName="Language" name="language" type="string">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule" name="IHG_CustomRule_ATS_GC_ProvisioningForm_language"/>
+          </RuleRef>
+        </Field>
+        <Field displayName="Activation Type" name="activationType" type="string">
+          <RuleRef>
+            <Reference class="sailpoint.object.Rule"  name="IHG_CustomRule_ATS_GC_ProvisioningForm_activationType"/>
+          </RuleRef>
+        </Field>
+        <Field displayName="Enabled" name="enabled" type="string" value="true"/>
+        <Field displayName="DUMMY DATA" name="DUMMY_DATA" type="string" value="MYID_replaceChar1"/>
+      </Section>
+    </Form>
+    <Form name="Update_Provisioning_Policy_Talentlink" objectType="account" type="Update">
+      <Attributes>
+        <Map>
+          <entry key="pageTitle" value="Update_Provisioning_Policy_Talentlink"/>
+        </Map>
+      </Attributes>
+      <Section name="Section 1">
+        <Field displayName="DUMMY DATA" name="DUMMY_DATA" type="string">
+          <Script>
+		  <Includes>
+              <Reference class="sailpoint.object.Rule"  name="IHG_Rule_Library_ManageAccessGenericFramework"/>
+            </Includes>
+            <Source>
+			//System.out.println("Project in TalentLink is "+project.toXml());
+					return method_getProvFormDummyFieldValues("MYID_replaceChar1",project,application);
+					</Source>
+          </Script>
+        </Field>
+      </Section>
+    </Form>
+  </ProvisioningForms>
+  <Schemas>
+    <Schema displayAttribute="ATSLogin" identityAttribute="ATSLogin"  nativeObjectType="account" objectType="account" permissionsRemediationModificationType="None">
+      <AttributeDefinition name="ATS_ID" type="string"/>
+      <AttributeDefinition name="firstName" type="string"/>
+      <AttributeDefinition name="lastName" type="string"/>
+      <AttributeDefinition name="mail" type="string"/>
+      <AttributeDefinition name="ATSLogin" type="string"/>
+      <AttributeDefinition entitlement="true" managed="true" multi="true" name="TALENTLINK_MYID_ENTITLEMENT" type="string"/>
+      <AttributeDefinition name="enabled" type="string"/>
+      <AttributeDefinition name="DUMMY_DATA" type="string"/>
+      <AttributeDefinition entitlement="true" multi="true" name="TALENTLINK_ROLE_DTLS" type="string"/>
+      <AttributeDefinition name="type" type="string"/>
+    </Schema>
+  </Schemas>
+  <ApplicationScorecard/>
+</Application>
