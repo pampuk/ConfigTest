@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE GroupDefinition PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<GroupDefinition indexed="true" name="IHG_Application_Owners">
+  <GroupFilter>
+    <CompositeFilter operation="AND">
+      <Filter joinProperty="Application.owner" operation="JOIN" property="id"/>
+      <Filter operation="IN" property="workgroup">
+        <Value>
+          <List>
+            <Boolean>true</Boolean>
+            <Boolean/>
+          </List>
+        </Value>
+      </Filter>
+    </CompositeFilter>
+  </GroupFilter>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+</GroupDefinition>
