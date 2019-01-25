@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Bundle PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Bundle displayName=" Revenue Management System (RMS) Specific Roles" name="Revenue Management System (RMS) Only" type="business">
+  <AssignedScope>
+    <Reference class="sailpoint.object.Scope" name="RMS Application Request"/>
+  </AssignedScope>
+  <Attributes>
+    <Map>
+      <entry key="accountSelectorRules"/>
+      <entry key="allowDuplicateAccounts" value="false"/>
+      <entry key="allowMultipleAssignments" value="false"/>
+      <entry key="mergeTemplates" value="false"/>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US" value="Select this option for assigning RMS specific roles like RMS Support, RMS Production Admin."/>
+          </Map>
+        </value>
+      </entry>
+    </Map>
+  </Attributes>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <Selector>
+    <IdentitySelector>
+      <RuleRef>
+        <Reference class="sailpoint.object.Rule" name="IHG_CustomRule_RoleAssignment_GRS_RMS"/>
+      </RuleRef>
+    </IdentitySelector>
+  </Selector>
+</Bundle>

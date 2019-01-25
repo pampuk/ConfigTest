@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Bundle PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Bundle assignedScopePath="8a53f2a05e94e5a2015e94e9a1610041:8a53f2a062d3e9a10162f1e37218390c"  displayName=" MyRecruit (China only) 洲聘" name="MyRecruit (China only) 洲聘" type="business">
+  <AssignedScope>
+    <Reference class="sailpoint.object.Scope" name="Lumesse Talentlink GC Application Request"/>
+  </AssignedScope>
+  <Attributes>
+    <Map>
+      <entry key="accountSelectorRules"/>
+      <entry key="allowDuplicateAccounts" value="false"/>
+      <entry key="allowMultipleAssignments" value="false"/>
+      <entry key="mergeTemplates" value="true"/>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US"/>
+          </Map>
+        </value>
+      </entry>
+    </Map>
+  </Attributes>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <Selector>
+    <IdentitySelector>
+      <RuleRef>
+        <Reference class="sailpoint.object.Rule" name="IHG_CustomRule_RoleAssignment_Talentlink"/>
+      </RuleRef>
+    </IdentitySelector>
+  </Selector>
+</Bundle>

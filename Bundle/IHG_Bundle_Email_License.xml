@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Bundle PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Bundle assignedScopePath="8a53f2a95daa9977015dc201b733000c" displayName=" IHG Email" name="IHG Email" type="business">
+  <AssignedScope>
+    <Reference class="sailpoint.object.Scope"  name="IHG Email Request"/>
+  </AssignedScope>
+  <Attributes>
+    <Map>
+      <entry key="Brand"/>
+      <entry key="Property"/>
+      <entry key="Region"/>
+      <entry key="accountSelectorRules"/>
+      <entry key="allowDuplicateAccounts" value="false"/>
+      <entry key="allowMultipleAssignments" value="false"/>
+      <entry key="mergeTemplates" value="false"/>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US" value="&lt;p>Select this option to request new IHG Email (Office 365)account OR modify existing IHG Email License level.&lt;/p>&#xA;&lt;p>&lt;b>&lt;u>Note&lt;/u>:&lt;/b> myID system &lt;b>does not support removal of email license&lt;/b> while the user is active in IHG. Create a support helpdesk ticket to O365 team to get assistance removing the email license.&lt;/p>"/>
+          </Map>
+        </value>
+      </entry>
+    </Map>
+  </Attributes>
+  <Owner>
+    <Reference class="sailpoint.object.Identity"  name="spadmin"/>
+  </Owner>
+  <Selector>
+    <IdentitySelector>
+      <RuleRef>
+        <Reference class="sailpoint.object.Rule"  name="IHG_CustomRule_RoleAssignment"/>
+      </RuleRef>
+    </IdentitySelector>
+  </Selector>
+</Bundle>

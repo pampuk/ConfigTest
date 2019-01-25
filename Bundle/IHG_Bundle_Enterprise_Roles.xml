@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE Bundle PUBLIC "sailpoint.dtd" "sailpoint.dtd">
+<Bundle displayName=" IHG Application Roles (Concerto)" name="Enterprise Roles" type="business">
+  <AssignedScope>
+    <Reference class="sailpoint.object.Scope" name="Enterprise Role Request"/>
+  </AssignedScope>
+  <Attributes>
+    <Map>
+      <entry key="Brand"/>
+      <entry key="Property"/>
+      <entry key="Region"/>
+      <entry key="accountSelectorRules"/>
+      <entry key="allowDuplicateAccounts" value="false"/>
+      <entry key="allowMultipleAssignments" value="false"/>
+      <entry key="mergeTemplates" value="false"/>
+      <entry key="sysDescriptions">
+        <value>
+          <Map>
+            <entry key="en_US" value="Select this option for assigning Enterprise Roles to Concerto applications"/>
+          </Map>
+        </value>
+      </entry>
+    </Map>
+  </Attributes>
+  <Owner>
+    <Reference class="sailpoint.object.Identity" name="spadmin"/>
+  </Owner>
+  <Selector>
+    <IdentitySelector>
+      <RuleRef>
+        <Reference class="sailpoint.object.Rule" name="IHG_CustomRule_RoleAssignment"/>
+      </RuleRef>
+    </IdentitySelector>
+  </Selector>
+</Bundle>
